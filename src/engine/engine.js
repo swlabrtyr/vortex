@@ -1,25 +1,29 @@
-import store from '../index';
+import store from "../index";
+import scheduleEvent from "../reducers";
 
 console.log(store.getState());
 
-window.onload = function () {
+window.onload = function() {
   const audioContext = new AudioContext();
-//  const output = audioContext.destination;
+  const output = audioContext.destination;
   const scheduleAheadTime = 0.1;
 
   let futureTickTime = audioContext.currentTime;
   let current16thNote = 1;
-//  let timerID, secondsPerBeat;
+  let timerID, secondsPerBeat;
   let stopTime = 0.0;
 
   function scheduleNote(beatDivisionNumber, start, stop) {
     for (let i = 0; i < store.getState().events.length; i++) {
-      beatDivisionNumber === store.getState().events[i].id
-        ? (notes[i].scheduled = true)
-        : (notes[i].scheduled = false);
+      if (beatDivisionNumber === store.getState().events[i].id) {
+        scheduleEvent(i); // Need to dispatch a "schedule note" action
+      }
 
-      if (notes[i].isArmed === true && store.getState().events[i].selected === true) {
-        let pitch = note2freq(notes[i].pitch);
+      if (
+        store.getState().events[i].isArmed === true &&
+        store.getState().events[i].isScheduled === true
+      ) {
+       // let pitch = note2freq(notes[i].pitch);
         //processAudioGraph(pitch, start, stop);
       }
     }
@@ -39,7 +43,10 @@ window.onload = function () {
   }
 
   function playBack() {
+    console.log('playing back')
     futureTickTime = audioContext.currentTime;
     scheduler();
   }
-}
+};
+
+export default playBack;

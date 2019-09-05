@@ -6,8 +6,14 @@ import "../styles.css";
 import sanitize from "../utils/sanitizeInput";
 import store from "../index";
 
-let Event = ({ id, onClick, selected, dispatch }) => {
+let Event = ({ id, onClick, isArmed, isScheduled, dispatch }) => {
   let input;
+
+  let eventStyle = {
+    isArmed: "isArmed",
+    isScheduled: "isSelected"
+  };
+
   return (
     <div className="event">
       <form
@@ -24,7 +30,11 @@ let Event = ({ id, onClick, selected, dispatch }) => {
       >
         <input className="edit-event-input" ref={node => (input = node)} />
       </form>
-      <li onClick={onClick} className={!selected ? "" : "event--active"}>
+      <li
+        onClick={onClick}
+        className={`${!isArmed ? "" : " event--armed"} 
+                    ${!isScheduled ? "" : " event--scheduled"}`}
+      >
         {store.getState().events[id].content}
       </li>
     </div>
@@ -33,7 +43,7 @@ let Event = ({ id, onClick, selected, dispatch }) => {
 
 Event.propTypes = {
   onClick: PropTypes.func.isRequired,
-  selected: PropTypes.bool.isRequired,
+  isArmed: PropTypes.bool.isRequired,
   id: PropTypes.number.isRequired,
   content: PropTypes.string.isRequired
 };

@@ -120,8 +120,12 @@ button {
   border: 0.1px dashed black;
 }
 
-.event--active {
+.event--armed {
   color: red;
+}
+
+.event--scheduled {
+  font-size: 10;
 }
 
 .filter {

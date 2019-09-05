@@ -3,6 +3,7 @@ import {
   ADD_EVENT,
   TOGGLE_EVENT,
   EDIT_EVENT,
+  SCHEDULE_EVENT,
   SET_VISIBILITY_FILTER,
   VisibilityFilters,
   REMOVE_EVENT
@@ -27,18 +28,22 @@ function events(state = [], action) {
         {
           id: action.id,
           content: action.content, // make sure content is not undefined
-          selected: false
+          isArmed: false,
+          isScheduled: false
         }
       ];
     case REMOVE_EVENT:
       return [...state.slice(0, -1).concat()];
+    case SCHEDULE_EVENT: 
+    return state.map(event => 
+      event.isScheduled ? !event.isScheduled : event)
+    case TOGGLE_EVENT:
+      return state.map(event =>
+        event.id === action.id ? { ...event, isArmed: !event.isArmed } : event
+      );
     case EDIT_EVENT:
       return state.map(event =>
         event.id === action.id ? { ...event, content: action.content } : event
-      );
-    case TOGGLE_EVENT:
-      return state.map(event =>
-        event.id === action.id ? { ...event, selected: !event.selected } : event
       );
     default:
       return state;
