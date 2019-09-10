@@ -29,6 +29,16 @@ window.onload = function() {
     }
   }
 
+  function getTempo() {
+    return store.getters.getTempo;
+  }
+
+  function futureTick() {
+    let tempo = getTempo();
+    secondsPerBeat = 60.0 / tempo;
+    futureTickTime += 0.25 * secondsPerBeat; // future note
+  }
+
   function scheduler() {
     // sequencer loop
     while (futureTickTime < audioContext.currentTime + scheduleAheadTime) {
@@ -42,11 +52,11 @@ window.onload = function() {
     timerID = window.setTimeout(scheduler, 25.0);
   }
 
+};
   function playBack() {
     console.log('playing back')
     futureTickTime = audioContext.currentTime;
     scheduler();
   }
-};
 
 export default playBack;

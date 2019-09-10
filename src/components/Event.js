@@ -30,13 +30,15 @@ let Event = ({ id, onClick, isArmed, isScheduled, dispatch }) => {
       >
         <input className="edit-event-input" ref={node => (input = node)} />
       </form>
-      <li
-        onClick={onClick}
-        className={`${!isArmed ? "" : " event--armed"} 
+      <div class="">
+        <li
+          onClick={onClick}
+          className={`${!isArmed ? "" : " event--armed"} 
                     ${!isScheduled ? "" : " event--scheduled"}`}
-      >
-        {store.getState().events[id].content}
-      </li>
+        >
+          {store.getState().events[id].content}
+        </li>
+      </div>
     </div>
   );
 };
