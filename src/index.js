@@ -6,7 +6,6 @@ import logger from 'redux-logger'
 import rootReducer from "./redux/reducers";
 import App from "./components/App";
 import "./styles.css";
-// import scheduler from "./engine"
 
 const store = createStore(rootReducer, applyMiddleware(logger));
 

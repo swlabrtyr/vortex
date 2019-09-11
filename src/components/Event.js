@@ -25,7 +25,6 @@ let Event = ({ id, onClick, isArmed, isScheduled, dispatch }) => {
       >
         <input className="edit-event-input" ref={node => (input = node)} />
       </form>
-      <div class="">
         <li
           id={id}
           onClick={onClick}
@@ -34,7 +33,6 @@ let Event = ({ id, onClick, isArmed, isScheduled, dispatch }) => {
         >
           {store.getState().events[id].content}
         </li>
-      </div>
     </div>
   );
 };

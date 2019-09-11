@@ -1,4 +1,4 @@
-import MAX_EVENTS from "../../constants";
+import { MAX_EVENTS } from "../../constants";
 
 export const ADD_EVENT = "ADD_EVENT";
 export const REMOVE_EVENT = "REMOVE_EVENT";

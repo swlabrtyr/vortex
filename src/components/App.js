@@ -5,7 +5,7 @@ import RemoveEvent from "./RemoveEvent";
 import VisibleEventList from "../containers/VisibleEventList";
 import "../styles.css";
 import scheduler from "../engine";
-// scheduler();
+scheduler();
 
 const App = () => (
   <div className="vortex-app">
