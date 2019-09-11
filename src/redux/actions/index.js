@@ -2,7 +2,6 @@ import MAX_EVENTS from "../../constants";
 
 export const ADD_EVENT = "ADD_EVENT";
 export const REMOVE_EVENT = "REMOVE_EVENT";
-export const SCHEDULE_EVENT = "SCHEDULE_EVENT";
 export const TOGGLE_EVENT = "TOGGLE_EVENT";
 export const EDIT_EVENT = "EDIT_EVENT";
 export const SET_VISIBILITY_FILTER = "SET_VISIBILITY_FILTER";
@@ -23,11 +22,6 @@ export const addEvent = content => ({
 export const removeEvent = id => ({
   type: REMOVE_EVENT,
   id: newEventId < 0 ? {} : --newEventId
-});
-
-export const scheduleEvent = id => ({
-  type: SCHEDULE_EVENT,
-  id
 });
 
 export const toggleEvent = id => ({

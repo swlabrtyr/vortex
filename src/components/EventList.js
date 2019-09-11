@@ -28,7 +28,7 @@ EventList.propTypes = {
   events: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      selected: PropTypes.bool.isRequired,
+      isArmed: PropTypes.bool.isRequired,
       content: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,

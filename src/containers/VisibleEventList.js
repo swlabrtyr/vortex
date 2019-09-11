@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { scheduleEvent, toggleEvent, VisibilityFilters } from "../redux/actions";
+import { toggleEvent, VisibilityFilters } from "../redux/actions";
 import EventList from "../components/EventList";
 
 const getVisibileEvents = (events, filter) => {
@@ -24,9 +24,6 @@ const mapDispatchToProps = dispatch => {
   return {
     toggleEvent: id => {
       return dispatch(toggleEvent(id));
-    },
-    scheduleEvent: id =>{
-      return dispatch(scheduleEvent(id))
     }
   };
 };

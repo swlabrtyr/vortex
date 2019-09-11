@@ -9,11 +9,6 @@ import store from "../index";
 let Event = ({ id, onClick, isArmed, isScheduled, dispatch }) => {
   let input;
 
-  let eventStyle = {
-    isArmed: "isArmed",
-    isScheduled: "isSelected"
-  };
-
   return (
     <div className="event">
       <form
@@ -32,6 +27,7 @@ let Event = ({ id, onClick, isArmed, isScheduled, dispatch }) => {
       </form>
       <div class="">
         <li
+          id={id}
           onClick={onClick}
           className={`${!isArmed ? "" : " event--armed"} 
                     ${!isScheduled ? "" : " event--scheduled"}`}
