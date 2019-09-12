@@ -30,7 +30,7 @@ let Event = ({ id, onClick, isArmed, dispatch }) => {
         onClick={onClick}
         className={`${!isArmed ? "" : " event--armed"}`}
       >
-        {id} {": " + store.getState().events[id].content}
+        {id+1} {" " + store.getState().events[id].content}
       </li>
     </div>
   );
