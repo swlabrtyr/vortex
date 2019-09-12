@@ -93,6 +93,7 @@ button {
   transition-duration: 0.2s;
   border-radius: 100%;
   /* border: 1px dashed black; */
+  font-size: 0.6em;
   cursor: pointer;
 }
 
@@ -107,7 +108,7 @@ button {
 }
 
 .event--armed {
-  color: red;
+  color: lightskyblue;
 }
 
 .event--scheduled {

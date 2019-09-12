@@ -6,7 +6,7 @@ import "../styles.css";
 import sanitize from "../utils/sanitizeInput";
 import store from "../index";
 
-let Event = ({ id, onClick, isArmed, isScheduled, dispatch }) => {
+let Event = ({ id, onClick, isArmed, dispatch }) => {
   let input;
 
   return (
@@ -25,14 +25,13 @@ let Event = ({ id, onClick, isArmed, isScheduled, dispatch }) => {
       >
         <input className="edit-event-input" ref={node => (input = node)} />
       </form>
-        <li
-          id={id}
-          onClick={onClick}
-          className={`${!isArmed ? "" : " event--armed"} 
-                    ${!isScheduled ? "" : " event--scheduled"}`}
-        >
-        {id}   { ": " + store.getState().events[id].content}
-        </li>
+      <li
+        id={id}
+        onClick={onClick}
+        className={`${!isArmed ? "" : " event--armed"}`}
+      >
+        {id} {": " + store.getState().events[id].content}
+      </li>
     </div>
   );
 };

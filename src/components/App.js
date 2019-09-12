@@ -14,7 +14,7 @@ const App = () => (
         <AddEvent />
         <RemoveEvent />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
     <VisibleEventList />
   </div>

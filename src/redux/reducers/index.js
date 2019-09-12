@@ -27,7 +27,7 @@ function events(state = [], action) {
         {
           id: action.id,
           content: action.content, // make sure content is not undefined
-          isArmed: false,
+          isArmed: true,
         }
       ];
     case REMOVE_EVENT:
