@@ -21,7 +21,7 @@ let AddEvent = ({ dispatch }) => {
         }}
       >
         <input className="add-event" ref={node => (input = node)} />
-        <button type="submit"> Add Event </button>
+        <button type="submit"> add </button>
       </form>
     </div>
   );

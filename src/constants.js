@@ -3,5 +3,5 @@ export const VISIBILITY_FILTERS = {
   ACTIVE: "active",
   INACTIVE: "inactive",
 };
-export const MAX_EVENTS = 24;
+export const MAX_EVENTS = 16;
 

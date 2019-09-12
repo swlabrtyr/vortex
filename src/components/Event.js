@@ -31,7 +31,7 @@ let Event = ({ id, onClick, isArmed, isScheduled, dispatch }) => {
           className={`${!isArmed ? "" : " event--armed"} 
                     ${!isScheduled ? "" : " event--scheduled"}`}
         >
-          {store.getState().events[id].content}
+        {id}   { ": " + store.getState().events[id].content}
         </li>
     </div>
   );

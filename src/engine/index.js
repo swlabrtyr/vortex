@@ -1,4 +1,5 @@
 import store from "../index";
+import note2freq from "../utils/note2freq";
 
 const audioContext = new AudioContext();
 const output = audioContext.createGain();
@@ -12,30 +13,40 @@ let timerID, secondsPerBeat;
 let stopTime = 0.0;
 let events = [];
 
+const showScheduledEvent = (element, isScheduled, eventID) => {
+  if (!eventID || !element) return;
+
+  isScheduled
+    ? (element.style.listStyle = "circle")
+    : (element.style.listStyle = "none");
+};
+
 console.log(audioContext);
 function scheduleNote(beatDivisionNumber, start, stop) {
   if (store === undefined) return;
+
   events = store.getState().events;
+
   for (let i = 0; i < events.length; i++) {
     if (beatDivisionNumber === events[i].id) {
       // Show scheduled event
-      document.getElementById(i).style.listStyle = "circle";
+
+      showScheduledEvent(document.getElementById(i), true, i);
       console.log("beat #: ", beatDivisionNumber);
 
       if (store.getState().events[i].isArmed === true) {
-        console.log(store.getState().events[i].content);
         // Process audio graph
-        console.log("ishouldplay");
-        // let pitch = note2freq(notes[i].pitch);
+
         // processAudioGraph(pitch, start, stop);
         let osc = audioContext.createOscillator();
-        osc.frequency.value = 220;
+        console.log(note2freq(events[i].content));
+        osc.frequency.value = note2freq(events[i].content);
         osc.connect(output);
         osc.start(audioContext.currentTime);
         osc.stop(futureTickTime + 0.2);
       }
     } else if (beatDivisionNumber !== events[i].id) {
-      document.getElementById(i).style.listStyle = "none";
+      showScheduledEvent(document.getElementById(i), false, i);
     }
   }
 }

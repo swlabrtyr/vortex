@@ -6,7 +6,7 @@ import "../styles.css";
 let RemoveEvent = ({ dispatch }) => {
   return (
     <div className="remove-event">
-      <button onClick={() => {dispatch(removeEvent())}}>Remove Event</button>
+      <button onClick={() => {dispatch(removeEvent())}}> pop </button>
     </div>
   );
 };

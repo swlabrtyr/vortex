@@ -2,7 +2,7 @@
 // content = previous state from store or empty string
 
 const sanitize = (text, content = "") => {
-  if (text.match(/^[0-9b#A-Z]{1,16}$/)) {
+  if (text.match(/^[A-Gb#0-8]{1,16}$/)) {
     return text;
   } else if (text.match(/\b$/)) return "";
   else {
@@ -11,3 +11,5 @@ const sanitize = (text, content = "") => {
 };
 
 export default sanitize;
+
+
