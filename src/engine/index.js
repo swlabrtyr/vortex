@@ -8,33 +8,36 @@ const scheduleAheadTime = 0.1;
 output.gain.value = 0.2;
 output.connect(audioContext.destination);
 let futureTickTime = audioContext.currentTime;
-let current16thNote = 1;
+let current8thNote = 1;
 let timerID, secondsPerBeat;
 let stopTime = 0.0;
 let events = [];
 
 const showScheduledEvent = (element, isScheduled, eventID) => {
-  if (!eventID || !element) return;
+  if (eventID === undefined || !element)
+    return; /* <---- Need to check eventID against undefined, 
+  as zero is a falsey value which 
+  will cause the first (zeroeth) event not to be effected
+  */
 
-  isScheduled
+  isScheduled 
     ? (element.style.listStyle = "circle")
     : (element.style.listStyle = "none");
 };
 
-console.log(audioContext);
 function scheduleNote(beatDivisionNumber, start, stop) {
   if (store === undefined) return;
 
   events = store.getState().events;
 
-  for (let i = 0; i < events.length; i++) {
+  for (let i = 0; i < events.length; ++i) {
     if (beatDivisionNumber === events[i].id) {
       // Show scheduled event
 
       showScheduledEvent(document.getElementById(i), true, i);
       console.log("beat #: ", beatDivisionNumber);
 
-      if (store.getState().events[i].isArmed === true) {
+      if (events[i].isArmed === true) {
         // Process audio graph
 
         // processAudioGraph(pitch, start, stop);
@@ -57,8 +60,8 @@ function scheduleNote(beatDivisionNumber, start, stop) {
 
 function futureTick() {
   // let tempo = getTempo();
-  let tempo = 60;
-  secondsPerBeat = 60.0 / tempo;
+  let tempo = 120;
+  secondsPerBeat = 120.0 / tempo;
   futureTickTime += 0.25 * secondsPerBeat; // future note
 }
 
@@ -67,12 +70,12 @@ function scheduler() {
   // sequencer loop
 
   while (futureTickTime < audioContext.currentTime + scheduleAheadTime) {
-    current16thNote++;
-    if (current16thNote >= events.length) {
-      current16thNote = 0;
+    current8thNote++;
+    if (current8thNote >= events.length) {
+      current8thNote = 0;
     }
-    // console.log('current 16th note: ', current16thNote);
-    scheduleNote(current16thNote, futureTickTime, futureTickTime + stopTime);
+    // console.log('current 8th note: ', current8thNote);
+    scheduleNote(current8thNote, futureTickTime, futureTickTime + stopTime);
     futureTick();
   }
   timerID = window.setTimeout(scheduler, 25.0);
