@@ -20,7 +20,7 @@ const showScheduledEvent = (element, isScheduled, eventID) => {
   will cause the first (zeroeth) event not to be effected
   */
 
-  isScheduled 
+  isScheduled
     ? (element.style.listStyle = "circle")
     : (element.style.listStyle = "none");
 };
@@ -42,16 +42,50 @@ function scheduleNote(beatDivisionNumber, start, stop) {
 
         // processAudioGraph(pitch, start, stop);
         let osc = audioContext.createOscillator();
+        let oscAmp = audioContext.createGain();
+        osc.connect(oscAmp);
+        oscAmp.connect(output);
+        osc.start(audioContext.currentTime);
+        oscAmp.gain.linearRampToValueAtTime(
+          0.5,
+          audioContext.currentTime + futureTickTime + 0.9
+        );
+        oscAmp.gain.linearRampToValueAtTime(0.0001, futureTickTime + 0.8);
+        osc.stop(futureTickTime + 3.3);
         console.log(note2freq(events[i].content));
         osc.frequency.value = note2freq(events[i].content);
-        osc.connect(output);
-        osc.start(audioContext.currentTime);
-        osc.stop(futureTickTime + 0.2);
       }
     } else if (beatDivisionNumber !== events[i].id) {
       showScheduledEvent(document.getElementById(i), false, i);
     }
   }
+}
+
+function ADSR(param, adsr, initVal) {
+  let time = audioContext.currentTime;
+  param.setValueAtTime(initVal, time);
+
+  let atk = adsr.attack.time;
+  let atkTime = time + atk;
+
+  param.exponentialRampToValueAtTime(adsr.attack.amnt, atkTime);
+
+  let dec = adsr.decay.time;
+  let decTime = time + atk + dec;
+
+  param.exponentialRampToValueAtTime(adsr.decay.amnt, decTime);
+
+  let sus = adsr.sustain.time;
+  let susTime = time + atk + dec + sus;
+
+  param.exponentialRampToValueAtTime(adsr.sustain.amnt, susTime);
+
+  let rel = adsr.release.time;
+  let relTime = time + atk + dec + sus + rel;
+
+  param.exponentialRampToValueAtTime(adsr.release.amnt, relTime);
+
+  stopTime = atk + dec + sus + rel + 0.01;
 }
 
 // function getTempo() {
