@@ -4,9 +4,11 @@
   "description": "A todo list app with React-Redux (with normalized store shape).",
   "keywords": [],
   "main": "src/index.js",
+  "homepage": "https://swlabrtyr.github.io/vortex",
   "dependencies": {
     "classnames": "2.2.6",
     "eslint": "^5.16.0",
+    "gh-pages": "^2.1.1",
     "react": "next",
     "react-dom": "next",
     "react-redux": "5.0.7",
@@ -21,6 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
