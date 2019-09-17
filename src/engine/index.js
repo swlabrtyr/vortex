@@ -1,13 +1,13 @@
 import store from "../index";
 import note2freq from "../utils/note2freq";
 
-const audioContext = new AudioContext();
-const output = audioContext.createGain();
+const audioCtx = new AudioContext();
+const output = audioCtx.createGain();
 const scheduleAheadTime = 0.1;
 
 output.gain.value = 0.2;
-output.connect(audioContext.destination);
-let futureTickTime = audioContext.currentTime;
+output.connect(audioCtx.destination);
+let futureTickTime = audioCtx.currentTime;
 let current8thNote = 1;
 let timerID, secondsPerBeat;
 let stopTime = 0.0;
@@ -41,17 +41,36 @@ function scheduleNote(beatDivisionNumber, start, stop) {
         // Process audio graph
 
         // processAudioGraph(pitch, start, stop);
-        let osc = audioContext.createOscillator();
-        let oscAmp = audioContext.createGain();
+        let osc = audioCtx.createOscillator();
+        let oscAmp = audioCtx.createGain();
         osc.connect(oscAmp);
         oscAmp.connect(output);
-        osc.start(audioContext.currentTime);
-        oscAmp.gain.linearRampToValueAtTime(
-          0.5,
-          audioContext.currentTime + futureTickTime + 0.9
+        osc.start(audioCtx.currentTime);
+
+        ADSR(
+          oscAmp.gain,
+          {
+            attack: {
+              time: 0.5,
+              amnt: 0.8
+            },
+            decay: {
+              time: 0.1,
+              amnt: 0.5
+            },
+            sustain: {
+              time: 1.0,
+              amnt: 0.2
+            },
+            release: {
+              time: 0.1,
+              amnt: 0.01
+            }
+          },
+          0.001
         );
-        oscAmp.gain.linearRampToValueAtTime(0.0001, futureTickTime + 0.8);
-        osc.stop(futureTickTime + 3.3);
+
+        osc.stop(futureTickTime + 1.8);
         console.log(note2freq(events[i].content));
         osc.frequency.value = note2freq(events[i].content);
       }
@@ -62,7 +81,7 @@ function scheduleNote(beatDivisionNumber, start, stop) {
 }
 
 function ADSR(param, adsr, initVal) {
-  let time = audioContext.currentTime;
+  let time = audioCtx.currentTime;
   param.setValueAtTime(initVal, time);
 
   let atk = adsr.attack.time;
@@ -103,7 +122,7 @@ function scheduler() {
   //  console.log("tick");
   // sequencer loop
 
-  while (futureTickTime < audioContext.currentTime + scheduleAheadTime) {
+  while (futureTickTime < audioCtx.currentTime + scheduleAheadTime) {
     current8thNote++;
     if (current8thNote >= events.length) {
       current8thNote = 0;
