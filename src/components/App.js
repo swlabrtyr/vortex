@@ -9,13 +9,10 @@ scheduler();
 
 const App = () => (
   <div className="vortex-app">
-    <div className="settings-container">
       <div className="add-remove">
         <AddEvent />
         <RemoveEvent />
       </div>
-      {/* <Footer /> */}
-    </div>
     <VisibleEventList />
   </div>
 );

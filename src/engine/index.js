@@ -73,6 +73,17 @@ function scheduleNote(beatDivisionNumber, start, stop) {
         osc.stop(futureTickTime + 1.8);
         console.log(note2freq(events[i].content));
         osc.frequency.value = note2freq(events[i].content);
+
+        let analyser = audioCtx.createAnalyser();
+        oscAmp.connect(analyser);
+        analyser.fftSize = 2048;
+        let bufferLength = analyser.frequencyBinCount;
+        let dataArray = new Uint8Array(bufferLength);
+        analyser.getByteTimeDomainData(dataArray);
+
+        for (let i = 0; i < bufferLength; i++) {
+          console.log("data from analyser: ", dataArray[i] / 128.0);
+        }
       }
     } else if (beatDivisionNumber !== events[i].id) {
       showScheduledEvent(document.getElementById(i), false, i);
