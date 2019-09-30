@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { toggleEvent, VisibilityFilters } from "../redux/actions";
-import EventList from "../components/EventList";
+import EventList from "../components/OuterEventList";
 
 const getVisibileEvents = (events, filter) => {
   switch (filter) {

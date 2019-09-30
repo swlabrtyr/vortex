@@ -131,7 +131,7 @@ function futureTick() {
   futureTickTime += 0.25 * secondsPerBeat; // future note
 }
 
-function scheduler() {
+function sequence() {
   //  console.log("tick");
   // sequencer loop
 
@@ -144,7 +144,7 @@ function scheduler() {
     scheduleNote(current8thNote, futureTickTime, futureTickTime + stopTime);
     futureTick();
   }
-  timerID = window.setTimeout(scheduler, 25.0);
+  timerID = window.setTimeout(sequence, 25.0);
 }
 
-export default scheduler;
+export default sequence;
