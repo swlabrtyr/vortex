@@ -5,7 +5,8 @@ import RemoveEvent from "./RemoveEvent";
 import VisibleEventList from "../containers/VisibleEventList";
 import "../styles.css";
 import scheduler from "../engine";
-scheduler();
+
+window.onload = scheduler(); // AudioContext needs user interaction before it can be created
 
 const App = () => (
   <div className="vortex-app">
