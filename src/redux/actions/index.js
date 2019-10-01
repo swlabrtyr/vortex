@@ -13,25 +13,15 @@ export const VisibilityFilters = {
 
 let newEventId = 0;
 
-const setId = id => {
-  if (id > MAX_EVENTS) {
-    return MAX_EVENTS;
-  } else if (id < 0) {
-    return 0;
-  } else {
-    return newEventId++;
-  }
-};
-
 export const addEvent = content => ({
   type: ADD_EVENT,
-  id: setId(newEventId),
+  id: newEventId > MAX_EVENTS ? MAX_EVENTS : newEventId++, 
   content
 });
 
 export const removeEvent = id => ({
   type: REMOVE_EVENT,
-  id: newEventId < 0 ? {} : --newEventId
+  id: newEventId <= 0 ? {} : --newEventId
 });
 
 export const toggleEvent = id => ({

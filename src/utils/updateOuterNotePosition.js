@@ -1,4 +1,4 @@
-const updateNotePosition = () => {
+const updateOuterNotePosition = () => {
   let container   = document.querySelector('ul')
   let circles     = container.querySelectorAll('.event')
   let total       = circles.length
@@ -31,5 +31,5 @@ const updateNotePosition = () => {
     })
   }
 }
-export default updateNotePosition
+export default updateOuterNotePosition
 
