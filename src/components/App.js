@@ -5,7 +5,6 @@ import PlayPause from "./PlayPause";
 import VisibleEventList from "../containers/VisibleEventList";
 import "../styles.css";
 
-
 const App = () => (
   <div className="vortex-app">
     <div className="add-remove">
