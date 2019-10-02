@@ -1,9 +1,16 @@
 import store from "../index";
 import note2freq from "../utils/note2freq";
+import store from "../index";
 
 const audioCtx = new AudioContext();
 const output = audioCtx.createGain();
 const scheduleAheadTime = 0.1;
+
+// document.querySelector("button").addEventListener("click", function() {
+//   audioCtx.resume().then(() => {
+//     console.log("Playback resumed successfully");
+//   });
+// });
 
 output.gain.value = 0.2;
 output.connect(audioCtx.destination);
@@ -131,20 +138,27 @@ function futureTick() {
   futureTickTime += 0.25 * secondsPerBeat; // future note
 }
 
-function sequence() {
-  //  console.log("tick");
+function scheduler() {
   // sequencer loop
-
   while (futureTickTime < audioCtx.currentTime + scheduleAheadTime) {
     current8thNote++;
     if (current8thNote >= events.length) {
       current8thNote = 0;
     }
-    // console.log('current 8th note: ', current8thNote);
     scheduleNote(current8thNote, futureTickTime, futureTickTime + stopTime);
     futureTick();
   }
   timerID = window.setTimeout(sequence, 25.0);
 }
 
-export default sequence;
+function select(state) {
+  return state.isPlaying;
+}
+
+function sequence() { 
+  console.log(select(store.getState()))
+ select(store.getState()) ? scheduler() : clearTimeout(timerID);
+}
+
+const shouldPlay = store.subscribe(sequence);
+shouldPlay();

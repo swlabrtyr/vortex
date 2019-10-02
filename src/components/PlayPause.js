@@ -1,12 +1,22 @@
 import React from "react";
-import sequence from "../engine";
+import { connect } from "react-redux";
+import { playBack } from "../redux/actions";
+import store from "../index";
 
-const PlayPause = () => {
+let PlayPause = () => {
   return (
     <div className="play-pause">
-      <button onClick={() => {sequence()}}> start </button>
+      <button
+        onClick={() => {
+          store.dispatch(playBack());
+        }}
+      >
+        {" "}
+        start{" "}
+      </button>
     </div>
   );
-}
+};
 
+PlayPause = connect()(PlayPause);
 export default PlayPause;

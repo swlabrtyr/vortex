@@ -20,7 +20,7 @@ let AddEvent = ({ dispatch }) => {
           input.value = "";
         }}
       >
-        <input autofocus="true" className="add-event" ref={node => (input = node)} />
+        <input autoFocus={true} className="add-event" ref={node => (input = node)} />
         <button type="submit"> add </button>
       </form>
     </div>
