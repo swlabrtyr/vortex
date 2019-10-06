@@ -1,6 +1,5 @@
 import store from "../index";
 import note2freq from "../utils/note2freq";
-import store from "../index";
 
 const audioCtx = new AudioContext();
 const output = audioCtx.createGain();
@@ -40,16 +39,12 @@ function scheduleNote(beatDivisionNumber, start, stop) {
   for (let i = 0; i < events.length; ++i) {
     if (beatDivisionNumber === events[i].id) {
       // Show scheduled event
-
       showScheduledEvent(document.getElementById(i), true, i);
-      console.log("beat #: ", beatDivisionNumber);
 
       if (events[i].isArmed === true) {
-        // Process audio graph
-
-        // processAudioGraph(pitch, start, stop);
         let osc = audioCtx.createOscillator();
         let oscAmp = audioCtx.createGain();
+
         osc.connect(oscAmp);
         oscAmp.connect(output);
         osc.start(audioCtx.currentTime);
@@ -83,7 +78,7 @@ function scheduleNote(beatDivisionNumber, start, stop) {
         let analyser = audioCtx.createAnalyser();
         analyser.fftSize = 2048;
 
-       // oscAmp.connect(analyser);
+        // oscAmp.connect(analyser);
 
         let bufferLength = analyser.frequencyBinCount;
         let dataArray = new Uint8Array(bufferLength);
@@ -127,18 +122,14 @@ function ADSR(param, adsr, initVal) {
   stopTime = atk + dec + sus + rel + 0.01;
 }
 
-// function getTempo() {
-//   return store.getters.getTempo;
-// }
-
 function futureTick() {
-  // let tempo = getTempo();
   let tempo = 120;
   secondsPerBeat = 120.0 / tempo;
   futureTickTime += 0.25 * secondsPerBeat; // future note
 }
 
 function scheduler() {
+  console.log('dig')
   // sequencer loop
   while (futureTickTime < audioCtx.currentTime + scheduleAheadTime) {
     current8thNote++;
@@ -155,10 +146,12 @@ function select(state) {
   return state.isPlaying;
 }
 
-function sequence() { 
-  console.log(select(store.getState()))
- select(store.getState()) ? scheduler() : clearTimeout(timerID);
+function sequence() {
+  select(store.getState()) ? scheduler() : clearTimeout(timerID);
 }
 
-const shouldPlay = store.subscribe(sequence);
-shouldPlay();
+const shouldPlay = () => {
+  sequence();
+}
+
+export default shouldPlay;

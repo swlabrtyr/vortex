@@ -1,14 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { playBack } from "../redux/actions";
-import store from "../index";
+import shouldPlay from "../engine";
 
 let PlayPause = () => {
   return (
     <div className="play-pause">
       <button
         onClick={() => {
-          store.dispatch(playBack());
+          shouldPlay();
         }}
       >
         {" "}
@@ -18,5 +18,11 @@ let PlayPause = () => {
   );
 };
 
-PlayPause = connect()(PlayPause);
+const mapStateToProps = (state) => {
+  return {
+      shouldPlay: state.sequence
+  }
+}
+
+PlayPause = connect(mapStateToProps)(PlayPause);
 export default PlayPause;
