@@ -21,8 +21,8 @@ let events = [];
 
 const showScheduledEvent = (element, isScheduled, eventID) => {
   if (eventID === undefined || !element)
-    return; /* <---- Need to check eventID against undefined, 
-  as zero is a falsey value which 
+    return; /* <---- Need to check eventID against undefined,
+  as zero is a falsey value which
   will cause the first (zeroeth) event not to be effected
   */
 
@@ -75,19 +75,6 @@ function scheduleNote(beatDivisionNumber, start, stop) {
         osc.stop(futureTickTime + 1.8);
         osc.frequency.value = note2freq(events[i].content);
 
-        let analyser = audioCtx.createAnalyser();
-        analyser.fftSize = 2048;
-
-        // oscAmp.connect(analyser);
-
-        let bufferLength = analyser.frequencyBinCount;
-        let dataArray = new Uint8Array(bufferLength);
-
-        analyser.getByteTimeDomainData(dataArray);
-
-        for (let i = 0; i < bufferLength; i++) {
-          console.log("data from analyser: ", dataArray[i] / 128.0);
-        }
       }
     } else if (beatDivisionNumber !== events[i].id) {
       showScheduledEvent(document.getElementById(i), false, i);
@@ -129,7 +116,6 @@ function futureTick() {
 }
 
 function scheduler() {
-  console.log('dig')
   // sequencer loop
   while (futureTickTime < audioCtx.currentTime + scheduleAheadTime) {
     current8thNote++;
@@ -142,12 +128,8 @@ function scheduler() {
   timerID = window.setTimeout(sequence, 25.0);
 }
 
-function select(state) {
-  return state.isPlaying;
-}
-
 function sequence() {
-  select(store.getState()) ? scheduler() : clearTimeout(timerID);
+ store.getState().isPlaying ? scheduler() : clearTimeout(timerID);
 }
 
 const shouldPlay = () => {

@@ -17,6 +17,7 @@ let newEventId = 0;
 
 export const playBack = () => ({
   type: TOGGLE_PLAYBACK,
+  // isPlaying: !isPlaying
 })
 
 export const addEvent = content => ({

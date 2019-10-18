@@ -47,9 +47,10 @@ const events = (state = [], action) => {
 }
 
 const isPlaying = (state = false, action) => {
+  console.log('isPlaying reducer')
   switch (action.type) {
     case TOGGLE_PLAYBACK:
-      return !state
+      return !state.isPlaying
     default:
       return state;
   } 
