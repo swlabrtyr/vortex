@@ -3,21 +3,13 @@ import {
   ADD_EVENT,
   TOGGLE_EVENT,
   EDIT_EVENT,
-  SET_VISIBILITY_FILTER,
   TOGGLE_PLAYBACK,
-  VisibilityFilters,
   REMOVE_EVENT
 } from "../actions";
 
-const { SHOW_ALL } = VisibilityFilters;
-
-const visibilityFilter = (state = SHOW_ALL, action) => {
-  switch (action.type) {
-    case SET_VISIBILITY_FILTER:
-      return action.filter;
-    default:
-      return state;
-  }
+const initState = {
+  isPlaying: false,
+  events: []
 }
 
 const events = (state = [], action) => {
@@ -46,20 +38,19 @@ const events = (state = [], action) => {
   }
 }
 
-const isPlaying = (state = false, action) => {
-  console.log('isPlaying reducer')
+const isPlaying = (state = initState, action) => {
   switch (action.type) {
     case TOGGLE_PLAYBACK:
-      return !state.isPlaying
+      return !isPlaying
     default:
       return state;
   } 
 } 
 
-const vortexApp = combineReducers({
-  visibilityFilter,
+const rootReducer = combineReducers({
+  initState,
   events,
   isPlaying
 });
 
-export default vortexApp;
+export default rootReducer;

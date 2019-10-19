@@ -177,7 +177,6 @@ const note2freq = note => {
     case "C8":
       return 4186.0;
     default:
-      console.log('not a valid input');
       return 0.0001;
   }
 };

@@ -2,7 +2,7 @@ import React from "react";
 import AddEvent from "./AddEvent";
 import RemoveEvent from "./RemoveEvent";
 import PlayPause from "./PlayPause";
-import VisibleEventList from "../containers/VisibleEventList";
+import EventContainer from "../containers/EventContainer";
 import "../styles.css";
 
 const App = () => (
@@ -12,7 +12,7 @@ const App = () => (
       <AddEvent />
       <RemoveEvent />
     </div>
-    <VisibleEventList />
+    <EventContainer />
   </div>
 );
 
