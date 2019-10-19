@@ -1,19 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
-import { playBack } from "../redux/actions";
+import { togglePlayBack } from "../redux/actions";
 import shouldPlay from "../engine";
+import store from "../index";
 
 let PlayPause = ({ dispatch }) => {
   return (
     <div className="play-pause">
       <button
         onClick={() => {
-          dispatch(playBack());
+          dispatch(togglePlayBack());
           shouldPlay();
         }}
       >
-        {" "}
-        start{" "}
+        {" start / stop "}
       </button>
     </div>
   );

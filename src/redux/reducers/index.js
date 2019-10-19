@@ -8,9 +8,9 @@ import {
 } from "../actions";
 
 const initState = {
-  isPlaying: false,
+  playback: false,
   events: []
-}
+};
 
 const events = (state = [], action) => {
   switch (action.type) {
@@ -20,7 +20,7 @@ const events = (state = [], action) => {
         {
           id: action.id,
           content: action.content, // make sure content is not undefined
-          isArmed: true,
+          isArmed: true
         }
       ];
     case REMOVE_EVENT:
@@ -36,21 +36,21 @@ const events = (state = [], action) => {
     default:
       return state;
   }
-}
+};
 
-const isPlaying = (state = initState, action) => {
+const playback = (state = false, action) => {
   switch (action.type) {
     case TOGGLE_PLAYBACK:
-      return !isPlaying
+      return {playback: !state.playback}
     default:
       return state;
-  } 
-} 
+  }
+};
 
 const rootReducer = combineReducers({
   initState,
   events,
-  isPlaying
+  playback
 });
 
 export default rootReducer;

@@ -129,7 +129,7 @@ function scheduler() {
 }
 
 function sequence() {
- store.getState().isPlaying ? scheduler() : clearTimeout(timerID);
+ store.getState().playback.playback ? scheduler() : clearTimeout(timerID);
 }
 
 const shouldPlay = () => {
