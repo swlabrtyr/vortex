@@ -7,17 +7,23 @@ import "../styles.css";
 
 const App = () => (
   <div>
-    <pre style={{color: 'white'}}>Type the desired note in the text input,
-    ie "A4" or "C#5", no flats _ only sharps >
-    </pre>  <div className="vortex-app">
 
-    <div className="add-remove">
-      <PlayPause />
-      <AddEvent />
-      <RemoveEvent />
+    <div className="vortex-app">
+    <div className="instructions">
+      <p>
+        Input the desired note in the text input
+        <br /> ie "A4" or "C#5"
+        <br /> No flats (b), <strong>only</strong> sharps (#)
+        <br /> Click the number to disable/enable a note
+      </p>
     </div>
-    <EventContainer />
-  </div>
+      <div className="controls">
+        <PlayPause />
+        <AddEvent />
+        <RemoveEvent />
+      </div>
+      <EventContainer />
+    </div>
   </div>
 );
 
