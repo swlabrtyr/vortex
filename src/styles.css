@@ -105,6 +105,7 @@ button {
 }
 
 .outer-event-list {
+  z-index: 1;
   display: flex;
   justify-content: center;
   margin: 110px;
@@ -117,6 +118,7 @@ button {
 }
 
 .inner-event-list {
+  z-index: 2;
   display: flex;
   justify-content: center;
   margin: 110px;
@@ -124,7 +126,7 @@ button {
   max-width: 50%;
   width: 400px;
   height: 400px;
-  position: relative;
+  position: absolute;
   border-radius: 100%;
 }
 

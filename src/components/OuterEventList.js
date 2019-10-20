@@ -21,9 +21,9 @@ let OuterEventList = ({ events, toggleEvent }) => {
           />
         );
       })}
-      <div id="inner-container">
+      {/* <div id="inner-container">
  <InnerEventContainer />
-</div>
+</div> */}
     </ul>
   );
 };

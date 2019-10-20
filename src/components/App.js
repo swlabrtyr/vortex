@@ -16,6 +16,7 @@ const App = () => (
         <div className="instructions">
           <p>
             Input the desired note in the text input
+            <br />
             <br /> ie "A4" or "C#5"
             <br />
             <br /> No flats (b), <strong>only</strong> sharps (#)
