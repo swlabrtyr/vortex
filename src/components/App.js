@@ -10,23 +10,28 @@ const App = () => (
   <div>
     <div className="vortex-app">
       <div className="controls">
-        <h5>
-          <strong>Vortex</strong>
-        </h5>
         <div className="instructions">
+          <h4>
+            <strong>Vortex</strong>
+          </h4>
           <p>
-            Input the desired note in the text input
+            1) Input the desired note in the text input
             <br />
-            <br /> ie "A4" or "C#5"
+            <br /> 2) Notes <strong>must</strong> include an octave number
             <br />
-            <br /> No flats (b), <strong>only</strong> sharps (#)
+            <br /> 3) Ex. "A4" or "C#5"
             <br />
-            <br /> Click the number to disable/enable a note
+            <br /> 4) No flats (b), <strong>only</strong> sharps (#)
+            <br />
+            <br /> 5) Click the number to disable/enable a note.
+            <br />
+            <br /> 6) Notes can be added by simply pressing{" "}
+            <strong>Enter</strong>
           </p>
         </div>
-        <PlayPause />
         <AddEvent />
         <RemoveEvent />
+        <PlayPause />
       </div>
       <div>
         <div id="outer-container">

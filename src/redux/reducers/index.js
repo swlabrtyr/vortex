@@ -8,7 +8,7 @@ import {
 } from "../actions";
 
 const initState = {
-  playback: false,
+  playback: true,
   events: []
 };
 
@@ -38,7 +38,7 @@ const events = (state = [], action) => {
   }
 };
 
-const playback = (state = false, action) => {
+const playback = (state = true, action) => {
   switch (action.type) {
     case TOGGLE_PLAYBACK:
       return {playback: !state.playback}

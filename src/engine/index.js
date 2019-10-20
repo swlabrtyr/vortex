@@ -123,14 +123,11 @@ const init = ctx => {
   }
 
   function sequence() {
+    console.log(store.getState().playback.playback);
     store.getState().playback.playback ? scheduler() : clearTimeout(timerID);
   }
 
-  const shouldPlay = () => {
-    sequence();
-  };
-
-  shouldPlay();
+  sequence();
 };
 
 export default init;

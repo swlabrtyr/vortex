@@ -7,7 +7,7 @@ export const EDIT_EVENT = "EDIT_EVENT";
 export const TOGGLE_PLAYBACK = "TOGGLE_PLAYBACK";
 
 let newEventId = 0;
-let playback = false;
+let playback = true;
 
 export const togglePlayBack = () => ({
   type: TOGGLE_PLAYBACK,
