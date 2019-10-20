@@ -1,5 +1,5 @@
-const updateOuterNotePosition = () => {
-  let container   = document.getElementById('outer-container')
+const updateInnerNotePosition = () => {
+  let container   = document.getElementById('inner-container')
   let circles     = container.querySelectorAll('.event')
   let total       = circles.length
   let diameter    = window.getComputedStyle(container)
@@ -31,5 +31,5 @@ const updateOuterNotePosition = () => {
     })
   }
 }
-export default updateOuterNotePosition
 
+export default updateInnerNotePosition

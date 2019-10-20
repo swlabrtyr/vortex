@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { toggleEvent } from "../redux/actions";
-import EventList from "../components/OuterEventList";
+import InnerEventList from "../components/InnerEventList";
 
 const mapStateToProps = state => {
   return {
@@ -16,9 +16,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const EventContainer = connect(
+const InnerEventContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(EventList);
+)(InnerEventList);
 
-export default EventContainer;
+export default InnerEventContainer;

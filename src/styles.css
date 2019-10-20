@@ -104,7 +104,7 @@ button {
   cursor: pointer;
 }
 
-.event-list {
+.outer-event-list {
   display: flex;
   justify-content: center;
   margin: 110px;
@@ -112,6 +112,18 @@ button {
   max-width: 50%;
   width: 600px;
   height: 600px;
+  position: relative;
+  border-radius: 100%;
+}
+
+.inner-event-list {
+  display: flex;
+  justify-content: center;
+  margin: 110px;
+  margin-left: 200px;
+  max-width: 50%;
+  width: 400px;
+  height: 400px;
   position: relative;
   border-radius: 100%;
 }

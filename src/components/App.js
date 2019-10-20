@@ -2,14 +2,17 @@ import React from "react";
 import AddEvent from "./AddEvent";
 import RemoveEvent from "./RemoveEvent";
 import PlayPause from "./PlayPause";
-import EventContainer from "../containers/EventContainer";
+import OuterEventContainer from "../containers/OuterEventContainer";
 import "../styles.css";
+import InnerEventContainer from "../containers/InnerEventContainer";
 
 const App = () => (
   <div>
     <div className="vortex-app">
       <div className="controls">
-      <h4><strong>Vortex</strong></h4>
+        <h5>
+          <strong>Vortex</strong>
+        </h5>
         <div className="instructions">
           <p>
             Input the desired note in the text input
@@ -24,7 +27,11 @@ const App = () => (
         <AddEvent />
         <RemoveEvent />
       </div>
-      <EventContainer />
+      <div>
+        <div id="outer-container">
+          <OuterEventContainer />
+        </div>
+      </div>
     </div>
   </div>
 );

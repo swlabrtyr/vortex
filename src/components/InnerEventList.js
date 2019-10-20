@@ -1,17 +1,16 @@
 import React, { useLayoutEffect } from "react";
 import PropTypes from "prop-types";
 import Event from "./Event";
-import InnerEventContainer from "../containers/InnerEventContainer";
-import updateOuterNotePosition from "../utils/updateOuterNotePosition";
+import updateInnerNotePosition from "../utils/updateOuterNotePosition";
 import "../styles.css";
 
-let OuterEventList = ({ events, toggleEvent }) => {
+let InnerEventList = ({ events, toggleEvent }) => {
   useLayoutEffect(() => {
-    updateOuterNotePosition();
+    updateInnerNotePosition();
   });
 
   return (
-    <ul className="outer-event-list">
+    <ul className="inner-event-list">
       {events.map(event => {
         return (
           <Event
@@ -21,14 +20,11 @@ let OuterEventList = ({ events, toggleEvent }) => {
           />
         );
       })}
-      <div id="inner-container">
- <InnerEventContainer />
-</div>
     </ul>
   );
 };
 
-OuterEventList.propTypes = {
+InnerEventList.propTypes = {
   events: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -39,4 +35,4 @@ OuterEventList.propTypes = {
   toggleEvent: PropTypes.func.isRequired
 };
 
-export default OuterEventList;
+export default InnerEventList;
