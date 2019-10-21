@@ -10,7 +10,7 @@ let Event = ({ id, onClick, isArmed, dispatch }) => {
   let input;
 
   return (
-    <div className="event">
+    <div className="event" id={id}>
       <form
         onSubmit={e => {
           e.preventDefault();
@@ -26,11 +26,11 @@ let Event = ({ id, onClick, isArmed, dispatch }) => {
         <input className="edit-event-input" ref={node => (input = node)} />
       </form>
       <li
-        id={id}
         onClick={onClick}
         className={`${!isArmed ? "" : " event--armed"}`}
       >
-        {id+1} {" " + store.getState().events[id].content}
+        {/* {id+1} */}
+        {" " + store.getState().events[id].content}
       </li>
     </div>
   );

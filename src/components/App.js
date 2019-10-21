@@ -14,7 +14,7 @@ const App = () => (
           <h4>
             <strong>Vortex</strong>
           </h4>
-          <p>
+          {/* <p>
             <br /> 1) Input the desired note in the text input
             <br />
             <br /> 2) Notes <strong>must</strong> include an octave number
@@ -27,7 +27,7 @@ const App = () => (
             <br />
             <br /> 6) Notes can be added by simply pressing{" "}
             <strong>Enter</strong>
-          </p>
+          </p> */}
         </div>
         <AddEvent />
         <RemoveEvent />

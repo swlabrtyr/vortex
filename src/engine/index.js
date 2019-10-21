@@ -22,8 +22,8 @@ const init = ctx => {
   */
 
     isScheduled
-      ? (element.style.listStyle = "circle")
-      : (element.style.listStyle = "none");
+      ? (element.style.border = "1px solid Pink")
+      : (element.style.border = "1px solid white")
   };
 
   function scheduleNote(beatDivisionNumber, start, stop) {
@@ -123,7 +123,6 @@ const init = ctx => {
   }
 
   function sequence() {
-    console.log(store.getState().playback.playback);
     store.getState().playback.playback ? scheduler() : clearTimeout(timerID);
   }
 

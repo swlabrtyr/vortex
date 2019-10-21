@@ -16,8 +16,6 @@ button {
   outline: none;
 }
 
-
-
 .vortex-app {
   position: relative;
   font-family: courier;
@@ -31,7 +29,7 @@ button {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start; 
-  height: 300px;
+  height: 50%;
   width: 200px;
   color: ivory;
 }
@@ -92,33 +90,31 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   position: absolute;
   transition: cubic-bezier(0.215, 0.61, 0.355, 1);
   transition-duration: 0.2s;
   border-radius: 100%;
-  border: 1px dotted white;
+  border: 1px solid white;
   color: lavender;
   font-size: 0.8em;
   cursor: pointer;
 }
 
 .outer-event-list {
-  z-index: 1;
   display: flex;
   justify-content: center;
   margin: 110px;
   margin-left: 200px;
   max-width: 50%;
-  width: 600px;
-  height: 600px;
+  width: 620px;
+  height: 580px;
   position: relative;
   border-radius: 100%;
 }
 
 .inner-event-list {
-  z-index: 2;
   display: flex;
   justify-content: center;
   margin: 110px;
@@ -131,5 +127,5 @@ button {
 }
 
 .event--armed {
-  color: lightskyblue;
+  color:palevioletred;
 }
