@@ -15,12 +15,10 @@ let Event = ({ id, onClick, isArmed, dispatch }) => {
         onKeyPress={e => validateInput(e)}
         onSubmit={e => {
           e.preventDefault();
-          let text = e.value
-          if (text === undefined) text = "";
           dispatch(
             editEvent(
               id,
-              text
+              input.value
             )
           );
           input.value = "";
