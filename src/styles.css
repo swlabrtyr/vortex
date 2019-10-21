@@ -13,7 +13,14 @@ ul {
 }
 
 button {
-  outline: none;
+  outline: ivory;
+  color: black;
+  /* background: linear-gradient(90deg, rgba(48,184,150,1) 75%, rgba(0,212,255,0.3477766106442577) 86%, rgba(52,131,161,1) 98%); */
+  background: ivory;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  height: 20px;
+  opacity: 0.8;
 }
 
 .vortex-app {

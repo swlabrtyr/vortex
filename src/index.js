@@ -9,6 +9,7 @@ import "./styles.css";
 
 const store = createStore(rootReducer, applyMiddleware(logger));
 
+
 render(
   <Provider store={store}>
     <App />
