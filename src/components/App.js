@@ -15,7 +15,7 @@ const App = () => (
             <strong>Vortex</strong>
           </h4>
           <p>
-            1) Input the desired note in the text input
+            <br /> 1) Input the desired note in the text input
             <br />
             <br /> 2) Notes <strong>must</strong> include an octave number
             <br />

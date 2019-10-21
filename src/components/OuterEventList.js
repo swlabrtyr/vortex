@@ -11,20 +11,20 @@ let OuterEventList = ({ events, toggleEvent }) => {
   });
 
   return (
-    <ul className="outer-event-list">
-      {events.map(event => {
-        return (
-          <Event
-            key={event.id}
-            {...event}
-            onClick={() => toggleEvent(event.id)}
-          />
-        );
-      })}
-      {/* <div id="inner-container">
- <InnerEventContainer />
-</div> */}
-    </ul>
+    <div className="outer-event-list">
+      <ul >
+        {events.map(event => {
+          return (
+            <Event
+              key={event.id}
+              {...event}
+              onClick={() => toggleEvent(event.id)}
+            />
+          );
+        })}
+      </ul>
+        {/* <InnerEventContainer /> */}
+    </div>
   );
 };
 

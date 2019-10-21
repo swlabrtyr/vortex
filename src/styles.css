@@ -82,8 +82,8 @@ button {
   border-bottom: 1px solid ivory;
   color: ivory;
   font-weight: 15;
-  padding-top: 15px;
-  margin-right: 3px;
+  /* padding-top: 15px; */
+  margin: 30px;
   width: 35px;
   box-shadow: none;
 }
@@ -98,7 +98,7 @@ button {
   transition: cubic-bezier(0.215, 0.61, 0.355, 1);
   transition-duration: 0.2s;
   border-radius: 100%;
-  /* border: 1px dotted black; */
+  border: 1px dotted white;
   color: lavender;
   font-size: 0.8em;
   cursor: pointer;
