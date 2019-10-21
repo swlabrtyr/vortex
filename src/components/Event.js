@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { editEvent } from "../redux/actions";
 import "../styles.css";
-import sanitize from "../utils/sanitizeInput";
+import validateInput from "../utils/validateInput";
 import store from "../index";
 
 let Event = ({ id, onClick, isArmed, dispatch }) => {
@@ -12,12 +12,15 @@ let Event = ({ id, onClick, isArmed, dispatch }) => {
   return (
     <div className="event" id={id}>
       <form
+        onKeyPress={e => validateInput(e)}
         onSubmit={e => {
           e.preventDefault();
+          let text = e.value
+          if (text === undefined) text = "";
           dispatch(
             editEvent(
               id,
-              sanitize(input.value, store.getState().events[id].content)
+              text
             )
           );
           input.value = "";
