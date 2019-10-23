@@ -2,7 +2,7 @@ import React from "react";
 import AddEvent from "./AddEvent";
 import RemoveEvent from "./RemoveEvent";
 import PlayPause from "./PlayPause";
-import OuterEventContainer from "../containers/OuterEventContainer";
+import OuterEventContainer from "../containers/EventContainer";
 import "../styles.css";
 
 const App = () => (

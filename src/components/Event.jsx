@@ -5,35 +5,32 @@ import { editEvent, POP_EVENT } from "../redux/actions";
 import "../styles.css";
 import validateInput from "../utils/validateInput";
 import store from "../index";
-import PopEvent from "../components/PopEvent";
 
 let Event = ({ id, onClick, isArmed, dispatch }) => {
   let input;
+  let content;
+
+  store.subscribe(() => {
+    return store.getState().events[id]
+      ? (content = store.getState().events[id].content)
+      : "";
+  });
 
   return (
     <div id={id}>
-      <PopEvent id={id}/>
+      {/* <PopEvent id={id}/> */}
       <form
         onKeyPress={e => validateInput(e)}
         onSubmit={e => {
           e.preventDefault();
-          dispatch(
-            editEvent(
-              id,
-              input.value
-            )
-          );
+          dispatch(editEvent(id, input.value));
           input.value = "";
         }}
       >
         <input className="edit-event-input" ref={node => (input = node)} />
       </form>
-      <li
-        onClick={onClick}
-        className={`${!isArmed ? "" : " event--armed"}`}
-      >
-        {/* {id+1} */}
-        {store.getState().events[id] ? " " + store.getState().events[id].content : ""}
+      <li onClick={onClick} className={`${!isArmed ? "" : " event--armed"}`}>
+        {" " + content}
       </li>
     </div>
   );
