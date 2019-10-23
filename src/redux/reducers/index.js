@@ -4,7 +4,8 @@ import {
   TOGGLE_EVENT,
   EDIT_EVENT,
   TOGGLE_PLAYBACK,
-  REMOVE_EVENT
+  REMOVE_EVENT,
+  POP_EVENT
 } from "../actions";
 
 const initState = {
@@ -25,6 +26,8 @@ const events = (state = [], action) => {
       ];
     case REMOVE_EVENT:
       return [...state.slice(0, -1).concat()];
+    case POP_EVENT:
+      return state.filter(event => event.id !== action.id);
     case TOGGLE_EVENT:
       return state.map(event =>
         event.id === action.id ? { ...event, isArmed: !event.isArmed } : event
@@ -41,7 +44,7 @@ const events = (state = [], action) => {
 const playback = (state = true, action) => {
   switch (action.type) {
     case TOGGLE_PLAYBACK:
-      return {playback: !state.playback}
+      return { playback: !state.playback };
     default:
       return state;
   }

@@ -1,29 +1,33 @@
 import React, { useLayoutEffect } from "react";
 import PropTypes from "prop-types";
 import Event from "./Event";
-import InnerEventContainer from "../containers/InnerEventContainer";
 import updateOuterNotePosition from "../utils/updateOuterNotePosition";
 import "../styles.css";
+import PopEvent from "../components/PopEvent";
+import { popEvent } from "../redux/actions";
 
-let OuterEventList = ({ events, toggleEvent }) => {
+let OuterEventList = ({ id, events, toggleEvent }) => {
   useLayoutEffect(() => {
     updateOuterNotePosition();
   });
 
   return (
     <div className="outer-event-list">
-      <ul >
+      <ul>
         {events.map(event => {
           return (
-            <Event
-              key={event.id}
-              {...event}
-              onClick={() => toggleEvent(event.id)}
-            />
+            <div class="event">
+              {/* <PopEvent id={event.id} /> */}
+              <Event
+                key={event.id}
+                {...event}
+                onClick={() => toggleEvent(event.id)}
+              />
+            </div>
           );
         })}
       </ul>
-        {/* <InnerEventContainer /> */}
+      {/* <InnerEventContainer /> */}
     </div>
   );
 };

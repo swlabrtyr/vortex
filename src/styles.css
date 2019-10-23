@@ -15,7 +15,6 @@ ul {
 button {
   outline: ivory;
   color: black;
-  /* background: linear-gradient(90deg, rgba(48,184,150,1) 75%, rgba(0,212,255,0.3477766106442577) 86%, rgba(52,131,161,1) 98%); */
   background: ivory;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -70,11 +69,13 @@ button {
   box-shadow: none;
 }
 
+.pop-event {
+  margin-left: 70px;
+}
+
 .event-inner-content {
   position: relative;
   justify-content: center;
-
-  /* margin-right: 20px; */
 }
 
 .edit-event-input {
