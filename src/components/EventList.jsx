@@ -4,7 +4,7 @@ import Event from "./Event";
 import PopEvent from "./PopEvent";
 import updateNotePosition from "../utils/updateNotePosition";
 import "../styles.css";
-import store from "..";
+import uuid from "uuid";
 
 let EventList = ({ events, toggleEvent, popEvent }) => {
   useLayoutEffect(() => {
@@ -16,11 +16,11 @@ let EventList = ({ events, toggleEvent, popEvent }) => {
       <ul>
         <div className="event">
           <Event
-            key={event.id}
+            key={uuid.v4()}
             {...event}
             onClick={() => toggleEvent(event.id)}
           />
-          <PopEvent key={event.id} onClick={() => popEvent(event.id)} />
+          <PopEvent key={uuid.v4()} onClick={() => popEvent(event.id)} />
         </div>
       </ul>
     );

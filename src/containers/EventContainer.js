@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import { toggleEvent, popEvent } from "../redux/actions";
 import EventList from "../components/EventList";
-import store from "../index";
 
 const mapStateToProps = state => {
   return {

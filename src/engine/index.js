@@ -5,17 +5,17 @@ const init = ctx => {
   const audioCtx = ctx;
   const output = audioCtx.createGain();
   const scheduleAheadTime = 0.1;
-
-  output.gain.value = 0.2;
-  output.connect(audioCtx.destination);
   let futureTickTime = audioCtx.currentTime;
   let current8thNote = 1;
   let timerID, secondsPerBeat;
   let stopTime = 0.0;
   let events = [];
 
-  const showScheduledEvent = (element, isScheduled, eventID) => {
-    if (eventID === undefined || !element)
+  output.gain.value = 0.2;
+  output.connect(audioCtx.destination);
+
+  const showScheduledEvent = (element, isScheduled) => {
+    if (element === undefined || !element)
       return; /* <---- Need to check eventID against undefined,
   as zero is a falsey value which
   will cause the first (zeroeth) event not to be effected
@@ -32,9 +32,9 @@ const init = ctx => {
     events = store.getState().events;
 
     for (let i = 0; i < events.length; ++i) {
-      if (beatDivisionNumber === events[i].id) {
+      if (beatDivisionNumber === events[i].indexOf) {
         // Show scheduled event
-        showScheduledEvent(document.getElementById(i), true, i);
+        showScheduledEvent(document.getElementById(i), true);
 
         if (events[i].isArmed === true) {
           let osc = audioCtx.createOscillator();

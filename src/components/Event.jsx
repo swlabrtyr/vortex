@@ -1,24 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { editEvent, POP_EVENT } from "../redux/actions";
+import { editEvent } from "../redux/actions";
 import "../styles.css";
 import validateInput from "../utils/validateInput";
 import store from "../index";
 
 let Event = ({ id, onClick, isArmed, dispatch }) => {
   let input;
-  let content;
-
-  store.subscribe(() => {
-    return store.getState().events[id]
-      ? (content = store.getState().events[id].content)
-      : "";
-  });
 
   return (
-    <div id={id}>
-      {/* <PopEvent id={id}/> */}
+    <div>
       <form
         onKeyPress={e => validateInput(e)}
         onSubmit={e => {
@@ -30,7 +22,7 @@ let Event = ({ id, onClick, isArmed, dispatch }) => {
         <input className="edit-event-input" ref={node => (input = node)} />
       </form>
       <li onClick={onClick} className={`${!isArmed ? "" : " event--armed"}`}>
-        {" " + content}
+        {" " + store.getState().events[id].content}
       </li>
     </div>
   );
