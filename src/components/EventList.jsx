@@ -16,11 +16,13 @@ let EventList = ({ events, toggleEvent, popEvent }) => {
       <ul>
         <div className="event">
           <Event
+            id={event.id}
             key={uuid.v4()}
             {...event}
             onClick={() => toggleEvent(event.id)}
           />
           <PopEvent key={uuid.v4()} onClick={() => popEvent(event.id)} />
+        <li>{event.content}</li>
         </div>
       </ul>
     );

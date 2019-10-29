@@ -4,11 +4,9 @@ import { connect } from "react-redux";
 import { editEvent } from "../redux/actions";
 import "../styles.css";
 import validateInput from "../utils/validateInput";
-import store from "../index";
 
 let Event = ({ id, onClick, isArmed, dispatch }) => {
   let input;
-
   return (
     <div>
       <form
@@ -21,9 +19,10 @@ let Event = ({ id, onClick, isArmed, dispatch }) => {
       >
         <input className="edit-event-input" ref={node => (input = node)} />
       </form>
-      <li onClick={onClick} className={`${!isArmed ? "" : " event--armed"}`}>
-        {" " + store.getState().events[id].content}
-      </li>
+      <div
+        onClick={onClick}
+        className={`${!isArmed ? "" : " event--armed"}`}
+      ></div>
     </div>
   );
 };

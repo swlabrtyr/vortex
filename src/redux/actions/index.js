@@ -15,19 +15,23 @@ export const togglePlayBack = () => ({
   playback
 });
 
-export const addEvent = content => ({
-  type: ADD_EVENT,
-  id: newEventId > MAX_EVENTS ? MAX_EVENTS : newEventId++, // TODO id is no longer necessary
-  content // it is only used to prevent user from inputting
-}); // over MAX_EVENTS
+export const addEvent = content => {
+  console.log("newEventId from add: ", newEventId);
+  return {
+    type: ADD_EVENT,
+    id: newEventId > MAX_EVENTS ? MAX_EVENTS : newEventId++, // TODO id is no longer necessary
+    content // it is only used to prevent user from inputting
+  };
+}; // over MAX_EVENTS
 
 export const removeEvent = () => ({
-  type: REMOVE_EVENT
-  // id: newEventId <= 0 ? {} : --newEventId
+  type: REMOVE_EVENT,
+  id: newEventId <= 0 ? {} : --newEventId
 });
 
 export const popEvent = id => {
-  newEventId -= newEventId;
+  newEventId--;
+  console.log("newEventId from pop: ", newEventId);
   return {
     type: POP_EVENT,
     id

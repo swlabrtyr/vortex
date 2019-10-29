@@ -13,11 +13,12 @@ const initState = {
   events: []
 };
 
-const events = (state = [], action) => {
+const events = (events = initState.events, action) => {
+  // console.log(action.id);
   switch (action.type) {
     case ADD_EVENT:
       return [
-        ...state,
+        ...events,
         {
           id: action.id,
           content: action.content, // make sure content is not undefined
@@ -25,19 +26,19 @@ const events = (state = [], action) => {
         }
       ];
     case REMOVE_EVENT:
-      return [...state.slice(0, -1).concat()];
+      return [...events.slice(0, -1).concat()];
     case POP_EVENT:
-      return state.filter(event => event.id !== action.id);
+      return events.filter(event => event.id !== action.id);
     case TOGGLE_EVENT:
-      return state.map(event =>
+      return events.map(event =>
         event.id === action.id ? { ...event, isArmed: !event.isArmed } : event
       );
     case EDIT_EVENT:
-      return state.map(event =>
+      return events.map(event =>
         event.id === action.id ? { ...event, content: action.content } : event
       );
     default:
-      return state;
+      return events;
   }
 };
 

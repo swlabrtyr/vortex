@@ -34,7 +34,7 @@ const init = ctx => {
     for (let i = 0; i < events.length; ++i) {
       if (beatDivisionNumber === events[i].indexOf) {
         // Show scheduled event
-        showScheduledEvent(document.getElementById(i), true);
+        showScheduledEvent(document.querySelectorAll('.event'), true);
 
         if (events[i].isArmed === true) {
           let osc = audioCtx.createOscillator();
