@@ -1,5 +1,6 @@
 import { MAX_EVENTS } from "../../constants";
-
+import store from "../../index";
+console.log(store)
 export const ADD_EVENT = "ADD_EVENT";
 export const POP_EVENT = "POP_EVENT";
 export const REMOVE_EVENT = "REMOVE_EVENT";
@@ -7,8 +8,10 @@ export const TOGGLE_EVENT = "TOGGLE_EVENT";
 export const EDIT_EVENT = "EDIT_EVENT";
 export const TOGGLE_PLAYBACK = "TOGGLE_PLAYBACK";
 
-let newEventId = 0;
+let newEventId = 0; 
 let playback = true;
+
+const events = store ? store.getState().events.length : [];
 
 export const togglePlayBack = () => ({
   type: TOGGLE_PLAYBACK,
@@ -16,13 +19,12 @@ export const togglePlayBack = () => ({
 });
 
 export const addEvent = content => {
-  console.log("newEventId from add: ", newEventId);
   return {
     type: ADD_EVENT,
-    id: newEventId > MAX_EVENTS ? MAX_EVENTS : newEventId++, // TODO id is no longer necessary
-    content // it is only used to prevent user from inputting
+    id: newEventId > MAX_EVENTS ? MAX_EVENTS : newEventId++, 
+    content 
   };
-}; // over MAX_EVENTS
+}; 
 
 export const removeEvent = () => ({
   type: REMOVE_EVENT,
@@ -31,7 +33,6 @@ export const removeEvent = () => ({
 
 export const popEvent = id => {
   newEventId--;
-  console.log("newEventId from pop: ", newEventId);
   return {
     type: POP_EVENT,
     id

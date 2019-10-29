@@ -5,7 +5,7 @@ import { editEvent } from "../redux/actions";
 import "../styles.css";
 import validateInput from "../utils/validateInput";
 
-let Event = ({ id, onClick, isArmed, dispatch }) => {
+let Event = ({ id, content, onClick, isArmed, dispatch }) => {
   let input;
   return (
     <div>
@@ -19,10 +19,12 @@ let Event = ({ id, onClick, isArmed, dispatch }) => {
       >
         <input className="edit-event-input" ref={node => (input = node)} />
       </form>
-      <div
+      <li
         onClick={onClick}
         className={`${!isArmed ? "" : " event--armed"}`}
-      ></div>
+      >
+        {" " + content}
+      </li>
     </div>
   );
 };

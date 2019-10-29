@@ -14,7 +14,6 @@ const initState = {
 };
 
 const events = (events = initState.events, action) => {
-  // console.log(action.id);
   switch (action.type) {
     case ADD_EVENT:
       return [
