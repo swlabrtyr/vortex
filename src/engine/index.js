@@ -31,12 +31,16 @@ const init = ctx => {
 
     events = store.getState().events;
 
-    for (let i = 0; i < events.length; ++i) {
-      if (beatDivisionNumber === events[i].indexOf) {
-        // Show scheduled event
-        showScheduledEvent(document.querySelectorAll('.event'), true);
+    events.map(event => {
 
-        if (events[i].isArmed === true) {
+        console.log("beat divison #: ", beatDivisionNumber)
+
+        console.log("events index: ", events.indexOf(event))
+      if (beatDivisionNumber === events.indexOf(event)) {
+        // Show scheduled event
+        showScheduledEvent(document.getElementById(events.indexOf(event)), true);
+
+        if (event.isArmed === true) {
           let osc = audioCtx.createOscillator();
           let oscAmp = audioCtx.createGain();
 
@@ -68,12 +72,12 @@ const init = ctx => {
           );
 
           osc.stop(futureTickTime + 1.8);
-          osc.frequency.value = note2freq(events[i].content);
+          osc.frequency.value = note2freq(event.content);
         }
-      } else if (beatDivisionNumber !== events[i].id) {
-        showScheduledEvent(document.getElementById(i), false, i);
+      } else if (beatDivisionNumber !== events.indexOf(event)) {
+        showScheduledEvent(document.getElementById(events.indexOf(event)), false, events.indexOf(event));
       }
-    }
+    })
   }
 
   function ADSR(param, adsr, initVal) {
