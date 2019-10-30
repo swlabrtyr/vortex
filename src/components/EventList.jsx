@@ -12,17 +12,19 @@ let EventList = ({ events, toggleEvent, popEvent }) => {
   });
 
   const evenstList = events.map(event => {
+    const index = events.indexOf(event);
+    console.log("event...: ", event);
     return (
       <ul>
         <div className="event">
           <Event
-            id={event.id}
+            id={index}
             key={uuid.v4()}
             {...event}
-            onClick={() => toggleEvent(event.id)}
+            onClick={() => toggleEvent(index)}
             content={event.content}
           />
-          <PopEvent key={uuid.v4()} onClick={() => popEvent(event.id)} />
+          <PopEvent key={uuid.v4()} onClick={() => popEvent(index)} />
         </div>
       </ul>
     );

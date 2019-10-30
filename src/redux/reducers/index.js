@@ -13,6 +13,16 @@ const initState = {
   events: []
 };
 
+const rmFromList = (list, index) => {
+  list.filter(item => {
+    return events.indexOf(item) !== index;
+  });
+};
+
+const decrFromIndex = (list, index) => {
+  return list.slice(index).forEach(item => (item.id -= 1));
+};
+
 const events = (events = initState.events, action) => {
   switch (action.type) {
     case ADD_EVENT:
@@ -27,14 +37,20 @@ const events = (events = initState.events, action) => {
     case REMOVE_EVENT:
       return [...events.slice(0, -1).concat()];
     case POP_EVENT:
-      return events.filter(event => event.id !== action.id);
+      return events.filter(event => {
+        return events.indexOf(event) !== action.id;
+      });
     case TOGGLE_EVENT:
       return events.map(event =>
-        event.id === action.id ? { ...event, isArmed: !event.isArmed } : event
+        events.indexOf(event) === action.id
+          ? { ...event, isArmed: !event.isArmed }
+          : event
       );
     case EDIT_EVENT:
       return events.map(event =>
-        event.id === action.id ? { ...event, content: action.content } : event
+        events.indexOf(event) === action.id
+          ? { ...event, content: action.content }
+          : event
       );
     default:
       return events;
