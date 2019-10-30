@@ -13,10 +13,10 @@ let EventList = ({ events, toggleEvent, popEvent }) => {
 
   const evenstList = events.map(event => {
     const index = events.indexOf(event);
-    console.log("index: ", index)
+    console.log("index: ", index);
     return (
       <ul>
-        <div id={index} className="event">
+        <div className="event">
           <Event
             id={index}
             key={uuid.v4()}

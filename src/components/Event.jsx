@@ -7,7 +7,7 @@ import validateInput from "../utils/validateInput";
 
 let Event = ({ id, content, onClick, isArmed, dispatch, key }) => {
   let input;
-  console.log("id: ", id)
+  console.log("id: ", id);
   return (
     <div>
       <form

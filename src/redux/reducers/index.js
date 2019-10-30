@@ -13,15 +13,19 @@ const initState = {
   events: []
 };
 
-const rmFromList = (list, index) => {
-  list.filter(item => {
-    return events.indexOf(item) !== index;
-  });
-};
+const incr = (function(n) {
+  return function() {
+    n += 1;
+    return n;
+  };
+})(-1);
 
-const decrFromIndex = (list, index) => {
-  return list.slice(index).forEach(item => (item.id -= 1));
-};
+let n = -1;
+
+function increment() {
+  n += 1;
+  return n;
+}
 
 const events = (events = initState.events, action) => {
   switch (action.type) {
@@ -37,9 +41,14 @@ const events = (events = initState.events, action) => {
     case REMOVE_EVENT:
       return [...events.slice(0, -1).concat()];
     case POP_EVENT:
-      return events.filter(event => {
-        return events.indexOf(event) !== action.id;
-      });
+      n = -1;
+      return events
+        .filter(event => {
+          return event.id !== action.id;
+        })
+        .map(event => {
+          return { ...event, id: increment() };
+        });
     case TOGGLE_EVENT:
       return events.map(event =>
         events.indexOf(event) === action.id

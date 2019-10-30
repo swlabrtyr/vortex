@@ -1,6 +1,4 @@
 import { MAX_EVENTS } from "../../constants";
-import store from "../../index";
-console.log(store)
 export const ADD_EVENT = "ADD_EVENT";
 export const POP_EVENT = "POP_EVENT";
 export const REMOVE_EVENT = "REMOVE_EVENT";
@@ -10,8 +8,6 @@ export const TOGGLE_PLAYBACK = "TOGGLE_PLAYBACK";
 
 let newEventId = 0; 
 let playback = true;
-
-const events = store ? store.getState().events.length : [];
 
 export const togglePlayBack = () => ({
   type: TOGGLE_PLAYBACK,
