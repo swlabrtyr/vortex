@@ -13,21 +13,14 @@ const initState = {
   events: []
 };
 
-const incr = (function(n) {
-  return function() {
+const events = (events = initState.events, action) => {
+  let n = -1;
+
+  const increment = () => {
     n += 1;
     return n;
   };
-})(-1);
 
-let n = -1;
-
-const increment = () => {
-  n += 1;
-  return n;
-}
-
-const events = (events = initState.events, action) => {
   switch (action.type) {
     case ADD_EVENT:
       return [
@@ -44,20 +37,28 @@ const events = (events = initState.events, action) => {
       n = -1;
       return events
         .filter(event => {
+          // Remove event
           return event.id !== action.id;
         })
         .map(event => {
-          return { ...event, id: increment() };
+          // Update **entire** events state to keep array index and event.id equal
+          return {
+            ...event,
+            id: increment()
+          };
+          /* Increment ensures that event.id is always equal to the events array index, 
+           helping keep scheduling and event handling correct during sequencing
+        */
         });
     case TOGGLE_EVENT:
       return events.map(event =>
-        events.indexOf(event) === action.id
+        event.id === action.id
           ? { ...event, isArmed: !event.isArmed }
           : event
       );
     case EDIT_EVENT:
       return events.map(event =>
-        events.indexOf(event) === action.id
+        event.id === action.id
           ? { ...event, content: action.content }
           : event
       );

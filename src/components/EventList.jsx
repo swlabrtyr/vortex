@@ -13,7 +13,7 @@ let EventList = ({ events, toggleEvent, popEvent }) => {
 
   const evenstList = events.map(event => {
     const index = events.indexOf(event);
-    console.log("index: ", index);
+
     return (
       <ul>
         <div id={index} className="event">
@@ -30,7 +30,7 @@ let EventList = ({ events, toggleEvent, popEvent }) => {
     );
   });
 
-  return <div className="outer-event-list">{evenstList}</div>;
+  return <div className="event-list">{evenstList}</div>;
 };
 
 EventList.propTypes = {

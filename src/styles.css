@@ -89,7 +89,7 @@ button {
   color: ivory;
   font-weight: 15;
   margin-top: 30px;
-  margin-left: 5px;
+  margin-left: 35px;
   width: 25px;
   box-shadow: none;
 }
@@ -110,27 +110,16 @@ button {
   cursor: pointer;
 }
 
-.outer-event-list {
+.event-list {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 110px;
   margin-left: 200px;
   max-width: 50%;
   width: 620px;
   height: 580px;
   position: relative;
-  border-radius: 100%;
-}
-
-.inner-event-list {
-  display: flex;
-  justify-content: center;
-  margin: 110px;
-  margin-left: 200px;
-  max-width: 50%;
-  width: 400px;
-  height: 400px;
-  position: absolute;
   border-radius: 100%;
 }
 

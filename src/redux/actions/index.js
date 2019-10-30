@@ -28,7 +28,7 @@ export const removeEvent = () => ({
 });
 
 export const popEvent = id => {
-  newEventId--;
+  newEventId--; // decrement event id to match array index
   return {
     type: POP_EVENT,
     id
