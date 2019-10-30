@@ -22,7 +22,7 @@ const incr = (function(n) {
 
 let n = -1;
 
-function increment() {
+const increment = () => {
   n += 1;
   return n;
 }

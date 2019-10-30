@@ -16,7 +16,7 @@ let EventList = ({ events, toggleEvent, popEvent }) => {
     console.log("index: ", index);
     return (
       <ul>
-        <div className="event">
+        <div id={index} className="event">
           <Event
             id={index}
             key={uuid.v4()}

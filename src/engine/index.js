@@ -5,17 +5,17 @@ const init = ctx => {
   const audioCtx = ctx;
   const output = audioCtx.createGain();
   const scheduleAheadTime = 0.1;
+
+  output.gain.value = 0.2;
+  output.connect(audioCtx.destination);
   let futureTickTime = audioCtx.currentTime;
   let current8thNote = 1;
   let timerID, secondsPerBeat;
   let stopTime = 0.0;
   let events = [];
 
-  output.gain.value = 0.2;
-  output.connect(audioCtx.destination);
-
-  const showScheduledEvent = (element, isScheduled) => {
-    if (element === undefined || !element)
+  const showScheduledEvent = (element, isScheduled, eventID) => {
+    if (eventID === undefined || !element)
       return; /* <---- Need to check eventID against undefined,
   as zero is a falsey value which
   will cause the first (zeroeth) event not to be effected
@@ -31,16 +31,12 @@ const init = ctx => {
 
     events = store.getState().events;
 
-    events.map(event => {
-
-        console.log("beat divison #: ", beatDivisionNumber)
-
-        console.log("events index: ", events.indexOf(event))
-      if (beatDivisionNumber === events.indexOf(event)) {
+    for (let i = 0; i < events.length; ++i) {
+      if (beatDivisionNumber === events[i].id) {
         // Show scheduled event
-        showScheduledEvent(document.getElementById(events.indexOf(event)), true);
+        showScheduledEvent(document.getElementById(i), true, i);
 
-        if (event.isArmed === true) {
+        if (events[i].isArmed === true) {
           let osc = audioCtx.createOscillator();
           let oscAmp = audioCtx.createGain();
 
@@ -72,12 +68,12 @@ const init = ctx => {
           );
 
           osc.stop(futureTickTime + 1.8);
-          osc.frequency.value = note2freq(event.content);
+          osc.frequency.value = note2freq(events[i].content);
         }
-      } else if (beatDivisionNumber !== events.indexOf(event)) {
-        showScheduledEvent(document.getElementById(events.indexOf(event)), false, events.indexOf(event));
+      } else if (beatDivisionNumber !== events[i].id) {
+        showScheduledEvent(document.getElementById(i), false, i);
       }
-    })
+    }
   }
 
   function ADSR(param, adsr, initVal) {
