@@ -52,15 +52,11 @@ const events = (events = initState.events, action) => {
         });
     case TOGGLE_EVENT:
       return events.map(event =>
-        event.id === action.id
-          ? { ...event, isArmed: !event.isArmed }
-          : event
+        event.id === action.id ? { ...event, isArmed: !event.isArmed } : event
       );
     case EDIT_EVENT:
       return events.map(event =>
-        event.id === action.id
-          ? { ...event, content: action.content }
-          : event
+        event.id === action.id ? { ...event, content: action.content } : event
       );
     default:
       return events;

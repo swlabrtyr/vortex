@@ -15,18 +15,15 @@ let EventList = ({ events, toggleEvent, popEvent }) => {
     const index = events.indexOf(event);
 
     return (
-      <ul>
-        <div id={index} className="event">
+        <div key={uuid.v4(event)} id={index} className="event">
           <Event
             id={index}
-            key={uuid.v4()}
             {...event}
             onClick={() => toggleEvent(index)}
             content={event.content}
           />
-          <PopEvent key={uuid.v4()} onClick={() => popEvent(index)} />
+          <PopEvent onClick={() => popEvent(index)} />
         </div>
-      </ul>
     );
   });
 

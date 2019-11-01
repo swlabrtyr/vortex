@@ -20,13 +20,13 @@ let Event = ({ id, content, onClick, isArmed, dispatch, key }) => {
       >
         <input className="edit-event-input" ref={node => (input = node)} />
       </form>
-      <li
+      <div
         key={key}
         onClick={onClick}
         className={`${!isArmed ? "" : " event--armed"}`}
       >
         {" " + content}
-      </li>
+      </div>
     </div>
   );
 };
