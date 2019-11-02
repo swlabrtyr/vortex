@@ -22,8 +22,8 @@ const init = ctx => {
   */
 
     isScheduled
-      ? (element.style.border = "1px solid Pink")
-      : (element.style.border = "1px solid white")
+      ? (element.style.border = "0.12em solid palevioletred")
+      : (element.style.border = "0.12em solid lightskyblue")
   };
 
   function scheduleNote(beatDivisionNumber, start, stop) {

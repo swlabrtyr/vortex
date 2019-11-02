@@ -5,14 +5,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: #323435;
 }
 
 ul {
   list-style-type: none;
 }
 
-button {
+.play-pause {
   outline: ivory;
   color: black;
   background: ivory;
@@ -20,6 +20,38 @@ button {
   margin-bottom: 10px;
   height: 20px;
   opacity: 0.8;
+}
+
+.play-pause:active {
+  opacity: 0.4;
+}
+
+.add-btn {
+  outline: ivory;
+  color: black;
+  background: ivory;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  height: 20px;
+  opacity: 0.8;
+}
+
+.add-btn:active {
+  opacity: 0.4;
+}
+
+.rm-btn {
+  outline: ivory;
+  color: black;
+  background: ivory;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  height: 20px;
+  opacity: 0.8;
+}
+
+.rm-btn:active {
+  opacity: 0.4;
 }
 
 .vortex-app {
@@ -69,11 +101,25 @@ button {
 }
 
 .pop-event {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background:transparent;
-  color:white;
-  height: 20px;
+  font-size: 15px;
+  color: #323435;
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  border: transparent;
   margin-left:-10px;
   margin-top: -30px;
+  transition: background-color .7s;
+}
+
+.pop-event:hover {
+  color: ivory;
+  border: 1px solid ivory;
+  background-color: palevioletred;
 }
 
 .event-inner-content {
@@ -88,13 +134,24 @@ button {
   border-top: transparent;
   border-left: transparent;
   border-right: transparent;
-  border-bottom: 1px solid ivory;
+  border-bottom: transparent;
   color: ivory;
   font-weight: 15;
   margin-top: 60px;
   margin-left: -50px;
-  width: 25px;
+  width: 30px;
+  height: 20px;
   box-shadow: none;
+  border-radius: 5%;
+  transition-property: background-color border-bottom;
+  transition-duration: 1s;
+  transition-delay: .1s;
+}
+
+.edit-event-input:hover {
+  border-radius: 10%;
+  background-color: palevioletred;
+  border-bottom: 1px solid ivory;
 }
 
 .event-container {
@@ -102,9 +159,10 @@ button {
   width: 100px;
   height: 100px;
   position: absolute;
-  transition: cubic-bezier(0.215, 0.61, 0.355, 1);
-  transition-duration: 0.2s;
-  color: lavender;
+  transition-property: left top color;
+  transition-duration: 0.5s;
+  transition-delay: 0.1s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   font-size: 0.8em;
   cursor: pointer;
 }
@@ -119,25 +177,24 @@ button {
   border-radius: 100%;
 }
 
-
 .event-unarmed {
   display: flex;
   justify-content: center;
   align-items: center;
   color:white;
-  border-radius: 100%;
-  border: 1px solid white;
   height: 50px;
   width: 50px;
+  border-radius: 100%;
+  border: 1px solid white;
 }
 
 .event-armed {
   display: flex;
   justify-content: center;
   align-items: center;
-  color:palevioletred;
+  color:lightskyblue;
   width: 50px;
   height: 50px;
   border-radius: 100%;
-  border: 1px solid palevioletred;
+  border: 0.12em solid lightskyblue;
 }

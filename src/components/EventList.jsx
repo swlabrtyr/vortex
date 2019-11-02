@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from "react";
 import PropTypes from "prop-types";
 import Event from "./Event";
-import PopEvent from "./PopEvent";
+import Pop from "./Pop";
 import Input from "./Input";
 import updateNotePosition from "../utils/rotateComponent";
 import "../styles.css";
@@ -22,7 +22,9 @@ let EventList = ({
   return (
     <div className="event-list">
       <ul>
-        {events.map(event => (
+        {events.map(event => { 
+          console.log("isArmed: ", event.isArmed)
+        return (
           <div key={uuid.v4(event)} className="event-container">
             <Event
               id={event.id}
@@ -36,9 +38,9 @@ let EventList = ({
               onSubmit={() => onInputSubmit(event.id, event.content)}
               onKeyPress={() => onInputKeypress}
             />
-            <PopEvent onClick={() => onPopClick(event.id)} />
+            <Pop onClick={() => onPopClick(event.id)} />
           </div>
-        ))}
+        )})}
       </ul>
     </div>
   );

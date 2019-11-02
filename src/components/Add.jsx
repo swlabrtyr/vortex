@@ -7,9 +7,12 @@ import "../styles.css";
 import store from "../index";
 import init from "../engine"; // call init to autoplay when user adds a note? 
 
-let AddEvent = ({ dispatch }) => {
+let Add = ({ dispatch, onClick }) => {
   let input;
-
+  const onBtnClick = () => {
+    this.className = "add-btn-click"
+    this.className = "add-btn"
+  }
   return (
     <div>
       <form
@@ -24,11 +27,11 @@ let AddEvent = ({ dispatch }) => {
         }}
       >
         <input autoFocus={true} className="add-event" ref={node => (input = node)} />
-        <button type="submit"> add </button>
+        <button type="submit" className="add-btn"> add </button>
       </form>
     </div>
   );
 };
 
-AddEvent = connect()(AddEvent);
-export default AddEvent;
+Add = connect()(Add);
+export default Add;

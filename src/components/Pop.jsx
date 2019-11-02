@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import "../styles.css";
 
-let PopEvent = ({ onClick }) => {
+let Pop = ({ onClick }) => {
   return (
       <button className="pop-event" onClick={onClick}> x </button>
   );
 };
 
-PopEvent = connect()(PopEvent);
-export default PopEvent;
+Pop = connect()(Pop);
+export default Pop;

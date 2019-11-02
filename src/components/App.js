@@ -1,8 +1,8 @@
 import React from "react";
-import AddEvent from "./AddEvent";
-import RemoveEvent from "./RemoveEvent";
-import PlayPause from "./Toggle";
+import Add from "./Add";
+import Remove from "./Remove";
 import List from "../containers/List";
+import ToggleContainer from "../containers/ToggleContainer";
 import "../styles.css";
 
 const App = () => (
@@ -20,9 +20,9 @@ const App = () => (
             <br />
           </p>
         </div>
-        <PlayPause />
-        <AddEvent />
-        <RemoveEvent />
+        <ToggleContainer />
+        <Add />
+        <Remove />
       </div>
       <div>
         <div className="event-list-container" id="event-list-container">

@@ -1,7 +1,3 @@
-export const VISIBILITY_FILTERS = {
-  ALL: "all",
-  ACTIVE: "active",
-  INACTIVE: "inactive",
-};
+export const INIT_STATE_LENGTH = 7; // Number of initial objects in state.events
 export const MAX_EVENTS = 16;
 

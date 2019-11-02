@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import { removeEvent } from "../redux/actions";
 import "../styles.css";
 
-let RemoveEvent = ({ dispatch }) => {
+let Remove = ({ dispatch }) => {
   return (
     <div className="remove-event">
-      <button onClick={() => {dispatch(removeEvent())}}> pop </button>
+      <button className="rm-btn" onClick={() => {dispatch(removeEvent())}}> pop </button>
     </div>
   );
 };
 
-RemoveEvent = connect()(RemoveEvent);
-export default RemoveEvent;
+Remove = connect()(Remove);
+export default Remove;
