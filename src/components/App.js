@@ -20,9 +20,9 @@ const App = () => (
             <br />
           </p>
         </div>
+        <PlayPause />
         <AddEvent />
         <RemoveEvent />
-        <PlayPause />
       </div>
       <div>
         <div className="event-list-container" id="event-list-container">
