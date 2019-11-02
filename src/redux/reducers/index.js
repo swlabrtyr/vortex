@@ -52,7 +52,7 @@ const events = (events = initState.events, action) => {
         });
     case TOGGLE_EVENT:
       return events.map(event =>
-        event === action.id
+        event.id === action.id
           ? { ...event, isArmed: !event.isArmed }
           : event
       );

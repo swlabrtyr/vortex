@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "../styles.css";
 
-let Event = ({ onClick, id, content, isArmed, key }) => (
+let Event = ({ onClick, content, isArmed, key }) => (
   <li
     key={key}
     onClick={onClick}
-    className={`${!isArmed ? "event" : "event--armed"}`}
+    className={`${!isArmed ? "event-unarmed" : "event-armed"}`}
   >
     {content}
   </li>

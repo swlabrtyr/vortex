@@ -25,7 +25,7 @@ const App = () => (
         <PlayPause />
       </div>
       <div>
-        <div id="outer-container">
+        <div className="event-list-container" id="event-list-container">
           <List />
         </div>
       </div>

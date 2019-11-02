@@ -3,46 +3,47 @@ import PropTypes from "prop-types";
 import Event from "./Event";
 import PopEvent from "./PopEvent";
 import Input from "./Input";
-import updateNotePosition from "../utils/updateNotePosition";
+import updateNotePosition from "../utils/rotateComponent";
 import "../styles.css";
 import uuid from "uuid";
+import rotateComponent from "../utils/rotateComponent";
 
-let EventList = ({ 
-  events, 
-  onEventClick, 
-  onPopClick, 
-  onInputSubmit, 
-  onInputKeypress 
+let EventList = ({
+  events,
+  onEventClick,
+  onPopClick,
+  onInputSubmit,
+  onInputKeypress
 }) => {
 
-  useLayoutEffect(() => { 
-    updateNotePosition();  // Renders components in a circle
+  useLayoutEffect(() => {
+    rotateComponent(); // Renders components in a circle
   });
 
   return (
-    <ul>
-      {events.map((event, index) => (
-        <div>
-          <Event
-            key={uuid.v4(event)}
-            id={index}
-            {...event} // Pass props to Event components
-            onClick={() => onEventClick(event.id)}
-            content={event.content}
-          />
-          <Input 
-            id={event.id}
-            onSubmit={() => onInputSubmit(event.id, event.content)} 
-            onKeyPress={() => onInputKeypress}
-          />
-          <PopEvent onClick={() => onPopClick(event.id)}/>
-        </div>
-      ))}
-    </ul>
+    <div className="event-list">
+      <ul>
+        {events.map((event, index) => (
+          <div key={uuid.v4(event) }className="event-container">
+              
+            <Event
+              id={index}
+              {...event} // Pass props to each individual Event component
+              onClick={() => onEventClick(event.id)}
+              content={event.content}
+            />
+            <Input
+              id={event.id}
+              onSubmit={() => onInputSubmit(event.id, event.content)}
+              onKeyPress={() => onInputKeypress}
+            />
+            <PopEvent onClick={() => onPopClick(event.id)} />
+          </div>
+        ))}
+      </ul>
+    </div>
   );
 };
-
-// return <div className="event-list">{eventsList}</div>;
 
 EventList.propTypes = {
   events: PropTypes.arrayOf(

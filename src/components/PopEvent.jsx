@@ -4,9 +4,7 @@ import "../styles.css";
 
 let PopEvent = ({ onClick }) => {
   return (
-    <div className="pop-event">
-      <button onClick={onClick}> x </button>
-    </div>
+      <button className="pop-event" onClick={onClick}> x </button>
   );
 };
 
