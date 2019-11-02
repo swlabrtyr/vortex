@@ -114,9 +114,11 @@ ul {
   margin-left:-10px;
   margin-top: -30px;
   transition: background-color .7s;
+  outline: none !important;
 }
 
 .pop-event:hover {
+  outline: none !important;
   color: ivory;
   border: 1px solid ivory;
   background-color: palevioletred;
@@ -185,7 +187,7 @@ ul {
   height: 50px;
   width: 50px;
   border-radius: 100%;
-  border: 1px solid white;
+  border: 0.12em solid lightskyblue;
 }
 
 .event-armed {
