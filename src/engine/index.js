@@ -37,15 +37,26 @@ const init = ctx => {
         showScheduledEvent(document.getElementById(i), true, i);
 
         if (events[i].isArmed === true) {
-          let osc = audioCtx.createOscillator();
-          let oscAmp = audioCtx.createGain();
+          let osc1 = audioCtx.createOscillator();
+          let osc2 = audioCtx.createOscillator();
 
-          osc.connect(oscAmp);
-          oscAmp.connect(output);
-          osc.start(audioCtx.currentTime);
+          osc1.type = "triangle"
+          osc2.type = "sine";
+
+          let osc1Amp = audioCtx.createGain();
+          let osc2Amp = audioCtx.createGain()
+
+          osc1.connect(osc1Amp);
+          osc2.connect(osc2Amp);
+
+          osc1Amp.connect(output);
+          osc2Amp.connect(output);
+
+          osc1.start(audioCtx.currentTime);
+          osc2.start(audioCtx.currentTime);
 
           ADSR(
-            oscAmp.gain,
+            osc1Amp.gain,
             {
               attack: {
                 time: 0.5,
@@ -67,8 +78,37 @@ const init = ctx => {
             0.001
           );
 
-          osc.stop(futureTickTime + 1.8);
-          osc.frequency.value = note2freq(events[i].content);
+ADSR(
+            osc2Amp.gain,
+            {
+              attack: {
+                time: 0.5,
+                amnt: 0.8
+              },
+              decay: {
+                time: 0.1,
+                amnt: 0.5
+              },
+              sustain: {
+                time: 1.0,
+                amnt: 0.2
+              },
+              release: {
+                time: 0.1,
+                amnt: 0.01
+              }
+            },
+            0.001
+          );
+
+          osc1.stop(futureTickTime + 1.8);
+          osc2.stop(futureTickTime + 1.8);
+
+          osc1.frequency.value = note2freq(events[i].content);
+          osc2.frequency.value = note2freq(events[i].content) / 2;
+
+          osc1.detune.value = 7;
+          osc2.detune.value = -13;
         }
       } else if (beatDivisionNumber !== events[i].id) {
         showScheduledEvent(document.getElementById(i), false, i);
