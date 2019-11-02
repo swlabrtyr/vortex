@@ -15,7 +15,6 @@ let EventList = ({
   onInputSubmit,
   onInputKeypress
 }) => {
-
   useLayoutEffect(() => {
     rotateComponent(); // Renders components in a circle
   });
@@ -23,14 +22,14 @@ let EventList = ({
   return (
     <div className="event-list">
       <ul>
-        {events.map((event, index) => (
-          <div key={uuid.v4(event) }className="event-container">
-              
+        {events.map(event => (
+          <div key={uuid.v4(event)} className="event-container">
             <Event
-              id={index}
+              id={event.id}
               {...event} // Pass props to each individual Event component
               onClick={() => onEventClick(event.id)}
               content={event.content}
+              isArmed={event.isArmed}
             />
             <Input
               id={event.id}

@@ -113,8 +113,8 @@ button {
   display: flex;
   margin: 110px;
   margin-left: 200px;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 450px;
   position: relative;
   border-radius: 100%;
 }
