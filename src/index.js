@@ -8,7 +8,6 @@ import App from "./components/App";
 import "./styles.css";
 
 const store = createStore(rootReducer, applyMiddleware(logger));
-console.log(store.getState());
 
 render(
   <Provider store={store}>

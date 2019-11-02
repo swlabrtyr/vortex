@@ -2,33 +2,47 @@ import React, { useLayoutEffect } from "react";
 import PropTypes from "prop-types";
 import Event from "./Event";
 import PopEvent from "./PopEvent";
+import Input from "./Input";
 import updateNotePosition from "../utils/updateNotePosition";
 import "../styles.css";
 import uuid from "uuid";
 
-let EventList = ({ events, toggleEvent, popEvent }) => {
-  useLayoutEffect(() => {
-    updateNotePosition();
+let EventList = ({ 
+  events, 
+  onEventClick, 
+  onPopClick, 
+  onInputSubmit, 
+  onInputKeypress 
+}) => {
+
+  useLayoutEffect(() => { 
+    updateNotePosition();  // Renders components in a circle
   });
 
-  const evenstList = events.map(event => {
-    const index = events.indexOf(event);
-
-    return (
-        <div key={uuid.v4(event)} id={index} className="event">
+  return (
+    <ul>
+      {events.map((event, index) => (
+        <div>
           <Event
+            key={uuid.v4(event)}
             id={index}
-            {...event}
-            onClick={() => toggleEvent(index)}
+            {...event} // Pass props to Event components
+            onClick={() => onEventClick(event.id)}
             content={event.content}
           />
-          <PopEvent onClick={() => popEvent(index)} />
+          <Input 
+            id={event.id}
+            onSubmit={() => onInputSubmit(event.id, event.content)} 
+            onKeyPress={() => onInputKeypress}
+          />
+          <PopEvent onClick={() => onPopClick(event.id)}/>
         </div>
-    );
-  });
-
-  return <div className="event-list">{evenstList}</div>;
+      ))}
+    </ul>
+  );
 };
+
+// return <div className="event-list">{eventsList}</div>;
 
 EventList.propTypes = {
   events: PropTypes.arrayOf(

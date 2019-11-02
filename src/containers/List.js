@@ -10,18 +10,18 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleEvent: id => {
+   onEventClick: id => {
       return dispatch(toggleEvent(id));
     },
-    popEvent: id => {
+    onPopClick: id => {
       return dispatch(popEvent(id));
     }
   };
 };
 
-const EventContainer = connect(
+const List = connect(
   mapStateToProps,
   mapDispatchToProps
 )(EventList);
 
-export default EventContainer;
+export default List;

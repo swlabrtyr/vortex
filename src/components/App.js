@@ -1,8 +1,8 @@
 import React from "react";
 import AddEvent from "./AddEvent";
 import RemoveEvent from "./RemoveEvent";
-import PlayPause from "./PlayPause";
-import OuterEventContainer from "../containers/EventContainer";
+import PlayPause from "./Toggle";
+import List from "../containers/List";
 import "../styles.css";
 
 const App = () => (
@@ -26,7 +26,7 @@ const App = () => (
       </div>
       <div>
         <div id="outer-container">
-          <OuterEventContainer />
+          <List />
         </div>
       </div>
     </div>

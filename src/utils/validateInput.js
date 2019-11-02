@@ -3,6 +3,6 @@ const validateInput = e => {
   if (!re.test(e.key)) {
     e.preventDefault();
   }
-}
+};
 
-export default validateInput
+export default validateInput;
