@@ -23,7 +23,7 @@ const init = ctx => {
 
     isScheduled
       ? (element.style.border = "0.12em solid palevioletred")
-      : (element.style.border = "0.12em solid lightskyblue")
+      : (element.style.border = "0.12em solid lightskyblue");
   };
 
   function scheduleNote(beatDivisionNumber, start, stop) {
@@ -40,14 +40,28 @@ const init = ctx => {
           let osc1 = audioCtx.createOscillator();
           let osc2 = audioCtx.createOscillator();
 
-          osc1.type = "triangle"
-          osc2.type = "sine";
+          osc1.type = "sine";
+          osc2.type = "triangle";
 
           let osc1Amp = audioCtx.createGain();
-          let osc2Amp = audioCtx.createGain()
+          let osc2Amp = audioCtx.createGain();
 
-          osc1.connect(osc1Amp);
-          osc2.connect(osc2Amp);
+          let filter1 = audioCtx.createBiquadFilter();
+          let filter2 = audioCtx.createBiquadFilter()
+
+          filter1.type = "lowpass";
+          filter2.type = "highpass";
+
+          filter1.frequency.value = 200;
+          filter2.frequency.value = 300;
+
+          console.log(filter1.frequency.value, filter1.type)
+
+          osc1.connect(filter1);
+          osc2.connect(filter2);
+
+          filter1.connect(osc1Amp);
+          filter2.connect(osc2Amp);
 
           osc1Amp.connect(output);
           osc2Amp.connect(output);
@@ -59,7 +73,7 @@ const init = ctx => {
             osc1Amp.gain,
             {
               attack: {
-                time: 0.5,
+                time: 0.01,
                 amnt: 0.8
               },
               decay: {
@@ -67,7 +81,7 @@ const init = ctx => {
                 amnt: 0.5
               },
               sustain: {
-                time: 1.0,
+                time: 0.5,
                 amnt: 0.2
               },
               release: {
@@ -78,27 +92,50 @@ const init = ctx => {
             0.001
           );
 
-ADSR(
+          ADSR(
             osc2Amp.gain,
             {
               attack: {
-                time: 0.5,
-                amnt: 0.8
+                time: 0.02,
+                amnt: 0.5
               },
               decay: {
                 time: 0.1,
                 amnt: 0.5
               },
               sustain: {
-                time: 1.0,
+                time: 0.5,
                 amnt: 0.2
               },
               release: {
-                time: 0.1,
+                time: 0.3,
                 amnt: 0.01
               }
             },
             0.001
+          );
+
+          ADSR(
+            filter1.frequency,
+            {
+              attack: {
+                time: 0.02,
+                amnt: 8000
+              },
+              decay: {
+                time: 0.1,
+                amnt: 2300
+              },
+              sustain: {
+                time: 0.5,
+                amnt: 2000
+              },
+              release: {
+                time: 0.3,
+                amnt: 300
+              }
+            },
+           0.001
           );
 
           osc1.stop(futureTickTime + 1.8);

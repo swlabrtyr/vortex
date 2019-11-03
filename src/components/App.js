@@ -5,7 +5,8 @@ import List from "../containers/List";
 import ToggleContainer from "../containers/ToggleContainer";
 import "../styles.css";
 
-const App = () => (
+const App = () => {
+  return (
   <div>
     <div className="vortex-app">
       <div className="controls">
@@ -25,12 +26,12 @@ const App = () => (
         <Remove />
       </div>
       <div>
-        <div className="event-list-container" id="event-list-container">
+        <div >
           <List />
         </div>
       </div>
     </div>
   </div>
-);
+)};
 
 export default App;

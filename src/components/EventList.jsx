@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Event from "./Event";
 import Pop from "./Pop";
 import Input from "./Input";
-import updateNotePosition from "../utils/rotateComponent";
 import "../styles.css";
 import uuid from "uuid";
 import rotateComponent from "../utils/rotateComponent";
@@ -20,10 +19,9 @@ let EventList = ({
   });
 
   return (
-    <div className="event-list">
+    <div id="event-list-container" className="event-list">
       <ul>
         {events.map(event => { 
-          console.log("isArmed: ", event.isArmed)
         return (
           <div key={uuid.v4(event)} className="event-container">
             <Event
