@@ -10,7 +10,8 @@ body {
 
 ul {
   list-style-type: none;
-
+  width: 500px;
+  height: 500px;
 }
 
 .play-pause {
@@ -174,8 +175,8 @@ ul {
   justify-content: center;
   align-items: center;
   margin: 110px;
-  margin-left: 200px;
-  width: 500px;
+  margin-left: 400px;
+  width: 600px;
   height: 450px;
   position: relative;
   border-radius: 100%;

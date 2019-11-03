@@ -109,7 +109,7 @@ const init = ctx => {
   */
 
     isScheduled
-      ? (element.style.border = "0.2em solid palevioletred")
+      ? (element.style.border = "0.12em solid palevioletred")
       : (element.style.border = "0.12em solid lightskyblue");
   };
 
