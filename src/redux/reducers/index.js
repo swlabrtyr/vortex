@@ -12,13 +12,13 @@ const initState = {
   playback: true,
   events: [
     { id: 0, content: "F4", isArmed: true },
-    { id: 1, content: "D#4", isArmed: true },
+    { id: 1, content: "", isArmed: true },
     { id: 2, content: "D4", isArmed: true },
-    { id: 3, content: "F5", isArmed: true },
-    { id: 4, content: "G5", isArmed: true },
-    { id: 5, content: "B4", isArmed: true },
-    { id: 6, content: "G4", isArmed: true },
-    { id: 7, content: "C4", isArmed: true }
+    { id: 3, content: "C5", isArmed: true },
+    { id: 4, content: "A#3", isArmed: true },
+    { id: 5, content: "F5", isArmed: true },
+    { id: 6, content: "", isArmed: true },
+    { id: 7, content: "C3", isArmed: true }
   ]
 };
 
@@ -36,7 +36,7 @@ const events = (events = initState.events, action) => {
         ...events,
         {
           id: action.id,
-          content: action.content, // make sure content is not undefined
+          content: action.content, 
           isArmed: action.isArmed
         }
       ];

@@ -40,8 +40,8 @@ const init = ctx => {
           let osc1 = audioCtx.createOscillator();
           let osc2 = audioCtx.createOscillator();
 
-          osc1.type = "sine";
-          osc2.type = "triangle";
+          osc1.type = "triangle";
+          osc2.type = "sine";
 
           let osc1Amp = audioCtx.createGain();
           let osc2Amp = audioCtx.createGain();
@@ -73,7 +73,7 @@ const init = ctx => {
             osc1Amp.gain,
             {
               attack: {
-                time: 0.01,
+                time: 0.5,
                 amnt: 0.8
               },
               decay: {
@@ -96,7 +96,7 @@ const init = ctx => {
             osc2Amp.gain,
             {
               attack: {
-                time: 0.02,
+                time: 0.2,
                 amnt: 0.5
               },
               decay: {
@@ -115,34 +115,34 @@ const init = ctx => {
             0.001
           );
 
-          ADSR(
-            filter1.frequency,
-            {
-              attack: {
-                time: 0.02,
-                amnt: 8000
-              },
-              decay: {
-                time: 0.1,
-                amnt: 2300
-              },
-              sustain: {
-                time: 0.5,
-                amnt: 2000
-              },
-              release: {
-                time: 0.3,
-                amnt: 300
-              }
-            },
-           0.001
-          );
+          // ADSR(
+          //   filter1.frequency,
+          //   {
+          //     attack: {
+          //       time: 0.02,
+          //       amnt: 8000
+          //     },
+          //     decay: {
+          //       time: 0.1,
+          //       amnt: 2300
+          //     },
+          //     sustain: {
+          //       time: 0.5,
+          //       amnt: 2000
+          //     },
+          //     release: {
+          //       time: 0.3,
+          //       amnt: 300
+          //     }
+          //   },
+          //  0.001
+          // );
 
           osc1.stop(futureTickTime + 1.8);
           osc2.stop(futureTickTime + 1.8);
 
           osc1.frequency.value = note2freq(events[i].content);
-          osc2.frequency.value = note2freq(events[i].content) / 2;
+          osc2.frequency.value = note2freq(events[i].content) / 4;
 
           osc1.detune.value = 7;
           osc2.detune.value = -13;
