@@ -2,6 +2,7 @@ import React, { useLayoutEffect } from "react";
 import PropTypes from "prop-types";
 import Event from "./Event";
 import Pop from "./Pop";
+import Envelope from "./Envelope";
 import Input from "./Input";
 import "../styles.css";
 import uuid from "uuid";
@@ -40,6 +41,7 @@ let EventList = ({
           </div>
         )})}
       </ul>
+      {/* <Envelope /> */}
     </div>
   );
 };

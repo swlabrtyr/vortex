@@ -1,6 +1,45 @@
 import store from "../index";
 import note2freq from "../utils/note2freq";
 
+let ADSRvals = {
+  gain: {
+    attack: {
+      time: 0.5,
+      amnt: 0.8
+    },
+    decay: {
+      time: 0.5,
+      amnt: 0.5
+    },
+    sustain: {
+      time: 0.5,
+      amnt: 0.5
+    },
+    release: {
+      time: 0.8,
+      amnt: 0.01
+    }
+  },
+  filter: {
+    attack: {
+      time: 0.5,
+      amnt: 8700
+    },
+    decay: {
+      time: 0.5,
+      amnt: 600
+    },
+    sustain: {
+      time: 0.5,
+      amnt: 500
+    },
+    release: {
+      time: 0.8,
+      amnt: 200
+    }
+  }
+};
+
 const init = ctx => {
   const audioCtx = ctx;
   const output = audioCtx.createGain();
@@ -14,6 +53,54 @@ const init = ctx => {
   let stopTime = 0.0;
   let events = [];
 
+  function createADSR(param, adsr, initVal) {
+    let time = audioCtx.currentTime;
+    param.setValueAtTime(initVal, time);
+
+    let atk = adsr.attack.time;
+    let atkTime = time + atk;
+
+    param.exponentialRampToValueAtTime(adsr.attack.amnt, atkTime);
+
+    let dec = adsr.decay.time;
+    let decTime = time + atk + dec;
+
+    param.exponentialRampToValueAtTime(adsr.decay.amnt, decTime);
+
+    let sus = adsr.sustain.time;
+    let susTime = time + atk + dec + sus;
+
+    param.exponentialRampToValueAtTime(adsr.sustain.amnt, susTime);
+
+    let rel = adsr.release.time;
+    let relTime = time + atk + dec + sus + rel;
+
+    param.exponentialRampToValueAtTime(adsr.release.amnt, relTime);
+
+    stopTime = atk + dec + sus + rel + 0.01;
+  }
+
+  function createGain(adsrVals, initVal, callback) {
+    let gain = audioCtx.createGain();
+    if (!arguments) return gain;
+    callback && callback(gain.gain, adsrVals, initVal);
+    return gain;
+  }
+
+  function createFilter(type, adsrVals, initVal, callback) {
+    let filter = audioCtx.createBiquadFilter();
+    filter.type = type;
+    if (!arguments) return filter;
+    callback && callback(filter.frequency, adsrVals, initVal);
+    return filter;
+  }
+
+  function createOsc(type) {
+    let osc = audioCtx.createOscillator();
+    osc.type = type;
+    return osc;
+  }
+
   const showScheduledEvent = (element, isScheduled, eventID) => {
     if (eventID === undefined || !element)
       return; /* <---- Need to check eventID against undefined,
@@ -22,7 +109,7 @@ const init = ctx => {
   */
 
     isScheduled
-      ? (element.style.border = "0.12em solid palevioletred")
+      ? (element.style.border = "0.2em solid palevioletred")
       : (element.style.border = "0.12em solid lightskyblue");
   };
 
@@ -37,111 +124,38 @@ const init = ctx => {
         showScheduledEvent(document.getElementById(i), true, i);
 
         if (events[i].isArmed === true) {
-          let osc1 = audioCtx.createOscillator();
-          let osc2 = audioCtx.createOscillator();
+          const osc1 = createOsc("triangle");
+          const osc2 = createOsc("sawtooth");
 
-          osc1.type = "triangle";
-          osc2.type = "sine";
+          let filterEnv = createFilter(
+            "lowpass",
+            ADSRvals.filter,
+            0.001,
+            createADSR
+          );
 
-          let osc1Amp = audioCtx.createGain();
-          let osc2Amp = audioCtx.createGain();
+          let ampEnv = createGain(
+            ADSRvals.gain, 
+            0.001, 
+            createADSR
+            );
 
-          let filter1 = audioCtx.createBiquadFilter();
-          let filter2 = audioCtx.createBiquadFilter()
-
-          filter1.type = "lowpass";
-          filter2.type = "highpass";
-
-          filter1.frequency.value = 200;
-          filter2.frequency.value = 300;
-
-          console.log(filter1.frequency.value, filter1.type)
-
-          osc1.connect(filter1);
-          osc2.connect(filter2);
-
-          filter1.connect(osc1Amp);
-          filter2.connect(osc2Amp);
-
-          osc1Amp.connect(output);
-          osc2Amp.connect(output);
+          osc1
+            .connect(filterEnv)
+            .connect(ampEnv)
+            .connect(output);
+          osc2
+            .connect(filterEnv)
+            .connect(ampEnv)
+            .connect(output);
 
           osc1.start(audioCtx.currentTime);
           osc2.start(audioCtx.currentTime);
 
-          ADSR(
-            osc1Amp.gain,
-            {
-              attack: {
-                time: 0.5,
-                amnt: 0.8
-              },
-              decay: {
-                time: 0.1,
-                amnt: 0.5
-              },
-              sustain: {
-                time: 0.5,
-                amnt: 0.2
-              },
-              release: {
-                time: 0.1,
-                amnt: 0.01
-              }
-            },
-            0.001
-          );
+          osc1.stop(futureTickTime + 2.8);
+          osc2.stop(futureTickTime + 2.8);
 
-          ADSR(
-            osc2Amp.gain,
-            {
-              attack: {
-                time: 0.2,
-                amnt: 0.5
-              },
-              decay: {
-                time: 0.1,
-                amnt: 0.5
-              },
-              sustain: {
-                time: 0.5,
-                amnt: 0.2
-              },
-              release: {
-                time: 0.3,
-                amnt: 0.01
-              }
-            },
-            0.001
-          );
-
-          // ADSR(
-          //   filter1.frequency,
-          //   {
-          //     attack: {
-          //       time: 0.02,
-          //       amnt: 8000
-          //     },
-          //     decay: {
-          //       time: 0.1,
-          //       amnt: 2300
-          //     },
-          //     sustain: {
-          //       time: 0.5,
-          //       amnt: 2000
-          //     },
-          //     release: {
-          //       time: 0.3,
-          //       amnt: 300
-          //     }
-          //   },
-          //  0.001
-          // );
-
-          osc1.stop(futureTickTime + 1.8);
-          osc2.stop(futureTickTime + 1.8);
-
-          osc1.frequency.value = note2freq(events[i].content);
+          osc1.frequency.value = note2freq(events[i].content)/ 2;
           osc2.frequency.value = note2freq(events[i].content) / 4;
 
           osc1.detune.value = 7;
