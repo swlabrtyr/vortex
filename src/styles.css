@@ -163,9 +163,10 @@ ul {
   width: 100px;
   height: 100px;
   position: absolute;
-  transition-duration: all 0.5s;
-  transition-delay: all 0.1s;
-  transition-timing-function: all cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition-duration: 0.5s;
+  transition-delay: 0.1s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition-property: all;
   font-size: 0.8em;
   cursor: pointer;
 }

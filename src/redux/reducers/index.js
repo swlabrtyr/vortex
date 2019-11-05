@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { adsr } from "../../constants";
 import {
   ADD_EVENT,
   TOGGLE_EVENT,
@@ -7,6 +8,7 @@ import {
   REMOVE_EVENT,
   POP_EVENT
 } from "../actions";
+import init from "../../engine";
 
 const initState = {
   playback: true,
@@ -19,8 +21,11 @@ const initState = {
     { id: 5, content: "F5", isArmed: true },
     { id: 6, content: "", isArmed: true },
     { id: 7, content: "C3", isArmed: true }
-  ]
+  ],
+  adsr 
 };
+
+console.log(initState);
 
 const increment = () => {
   n += 1;

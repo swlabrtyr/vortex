@@ -21,10 +21,9 @@ let EventList = ({
 
   return (
     <div id="event-list-container" className="event-list">
-      <ul>
-        {events.map(event => { 
+        {events.map((event, index) => { 
         return (
-          <div key={uuid.v4(event)} className="event-container">
+          <div id={event.id} key={index} className="event-container">
             <Event
               id={event.id}
               {...event} // Pass props to each individual Event component
@@ -40,7 +39,6 @@ let EventList = ({
             <Pop onClick={() => onPopClick(event.id)} />
           </div>
         )})}
-      </ul>
       {/* <Envelope /> */}
     </div>
   );

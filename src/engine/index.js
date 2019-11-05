@@ -1,44 +1,6 @@
 import store from "../index";
 import note2freq from "../utils/note2freq";
-
-let ADSRvals = {
-  gain: {
-    attack: {
-      time: 0.5,
-      amnt: 0.8
-    },
-    decay: {
-      time: 0.5,
-      amnt: 0.5
-    },
-    sustain: {
-      time: 0.5,
-      amnt: 0.5
-    },
-    release: {
-      time: 0.8,
-      amnt: 0.01
-    }
-  },
-  filter: {
-    attack: {
-      time: 0.5,
-      amnt: 8700
-    },
-    decay: {
-      time: 0.5,
-      amnt: 600
-    },
-    sustain: {
-      time: 0.5,
-      amnt: 500
-    },
-    release: {
-      time: 0.8,
-      amnt: 200
-    }
-  }
-};
+import { adsr } from "../constants";
 
 const init = ctx => {
   const audioCtx = ctx;
@@ -129,13 +91,13 @@ const init = ctx => {
 
           let filterEnv = createFilter(
             "lowpass",
-            ADSRvals.filter,
+            adsr.filter,
             0.001,
             createADSR
           );
 
           let ampEnv = createGain(
-            ADSRvals.gain, 
+            adsr.gain, 
             0.001, 
             createADSR
             );

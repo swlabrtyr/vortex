@@ -4,14 +4,14 @@ import { connect } from "react-redux";
 import "../styles.css";
 
 let Event = ({ id, onClick, content, isArmed, key }) => (
-  <li
+  <div
     id={id}
     key={key}
     onClick={onClick}
     className={`${!isArmed ? "event-unarmed" : "event-armed"}`}
   >
     {content}
-  </li>
+  </div>
 );
 
 Event.propTypes = {
