@@ -20,9 +20,9 @@ let EventList = ({
   });
   return (
     <div id="event-list-container" className="event-list">
-        {events.map((event, index) => { 
+        {events.map(event => { 
         return (
-          <div key={index} className="event-container">
+          <div key={event.id} className="event-container">
             <Note
               id={event.id}
               {...event} // Pass props to each individual Event component
