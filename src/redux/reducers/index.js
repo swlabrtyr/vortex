@@ -15,12 +15,12 @@ const initState = {
   events: [
     { id: 0, content: "F4", isArmed: true },
     { id: 1, content: "", isArmed: true },
-    { id: 2, content: "D4", isArmed: true },
-    { id: 3, content: "C5", isArmed: true },
-    { id: 4, content: "A#3", isArmed: true },
-    { id: 5, content: "F5", isArmed: true },
-    { id: 6, content: "", isArmed: true },
-    { id: 7, content: "C3", isArmed: true }
+    { id: 2, content: "F5", isArmed: true },
+    { id: 3, content: "A5", isArmed: true },
+    { id: 4, content: "D5", isArmed: false },
+    { id: 5, content: "A#5", isArmed: true },
+    { id: 6, content: "C5", isArmed: false },
+    { id: 7, content: "F3", isArmed: true }
   ],
   adsr 
 };

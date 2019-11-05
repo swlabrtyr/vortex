@@ -86,7 +86,7 @@ const init = ctx => {
         showScheduledEvent(document.getElementById(i), true, i);
 
         if (events[i].isArmed === true) {
-          const osc1 = createOsc("triangle");
+          const osc1 = createOsc("sawtooth");
           const osc2 = createOsc("sawtooth");
 
           let filterEnv = createFilter(
@@ -121,7 +121,7 @@ const init = ctx => {
           osc2.frequency.value = note2freq(events[i].content) / 4;
 
           osc1.detune.value = 7;
-          osc2.detune.value = -13;
+          osc2.detune.value = -3;
         }
       } else if (beatDivisionNumber !== events[i].id) {
         showScheduledEvent(document.getElementById(i), false, i);
