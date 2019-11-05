@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import "../styles.css";
 
-let Event = ({ id, onClick, content, isArmed, key }) => (
+let Note = ({ id, onClick, content, isArmed, key }) => (
   <div
     id={id}
     key={key}
@@ -21,5 +21,5 @@ Event.propTypes = {
   content: PropTypes.string.isRequired
 };
 
-Event = connect()(Event);
-export default Event;
+Note = connect()(Note);
+export default Note;

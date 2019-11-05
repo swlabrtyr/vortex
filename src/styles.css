@@ -57,6 +57,7 @@ ul {
 }
 
 .vortex-app {
+  display: flex;
   position: relative;
   font-family: courier;
   display: flex;
@@ -163,10 +164,10 @@ ul {
   width: 100px;
   height: 100px;
   position: absolute;
-  transition-duration: 0.5s;
-  transition-delay: 0.1s;
+  transition-duration: 0.25s;
+  transition-delay: 0.01s;
   transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  transition-property: all;
+  transition-property: top left;
   font-size: 0.8em;
   cursor: pointer;
 }

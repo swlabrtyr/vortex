@@ -1,6 +1,6 @@
 import React, { useLayoutEffect } from "react";
 import PropTypes from "prop-types";
-import Event from "./Event";
+import Note from "./Note";
 import Pop from "./Pop";
 import Envelope from "./Envelope";
 import Input from "./Input";
@@ -18,13 +18,12 @@ let EventList = ({
   useLayoutEffect(() => {
     rotateComponent(); // Renders components in a circle
   });
-
   return (
     <div id="event-list-container" className="event-list">
         {events.map((event, index) => { 
         return (
-          <div id={event.id} key={index} className="event-container">
-            <Event
+          <div key={index} className="event-container">
+            <Note
               id={event.id}
               {...event} // Pass props to each individual Event component
               onClick={() => onEventClick(event.id)}
@@ -52,7 +51,6 @@ EventList.propTypes = {
       content: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  toggleEvent: PropTypes.func.isRequired
 };
 
 export default EventList;
