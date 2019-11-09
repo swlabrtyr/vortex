@@ -173,13 +173,11 @@ ul {
 }
 
 .event-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 110px;
+  display: block;
   margin-left: 400px;
   width: 600px;
   height: 450px;
+  margin-top:25px;
   position: relative;
   border-radius: 100%;
 }
@@ -210,4 +208,12 @@ ul {
   width: 350px;
   height: 200px;
   border: 0.12em solid lightskyblue;
+}
+
+/* media queries */
+
+@media screen and (max-width: 1000px) {
+  body {
+    flex-direction: column;
+  }
 }

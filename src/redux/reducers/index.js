@@ -8,7 +8,6 @@ import {
   REMOVE_EVENT,
   POP_EVENT
 } from "../actions";
-import init from "../../engine";
 
 const initState = {
   playback: true,

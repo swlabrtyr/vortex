@@ -5,7 +5,6 @@ import validateInput from "../utils/validateInput";
 import { MAX_EVENTS } from "../constants";
 import "../styles.css";
 import store from "../index";
-import init from "../engine"; // call init to autoplay when user adds a note? 
 
 let Add = ({ dispatch, onClick }) => {
   let input;
