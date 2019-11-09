@@ -8,10 +8,14 @@ body {
   background-color: #323435;
 }
 
-ul {
-  list-style-type: none;
-  width: 500px;
-  height: 500px;
+.vortex-app {
+  display: flex;
+  position: relative;
+  font-family: courier;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color:ivory;
 }
 
 .play-pause {
@@ -56,14 +60,6 @@ ul {
   opacity: 0.4;
 }
 
-.vortex-app {
-  display: flex;
-  position: relative;
-  font-family: courier;
-  display: flex;
-  align-items: center;
-}
-
 .controls {
   position: relative;
   display: flex;
@@ -75,14 +71,32 @@ ul {
   color: ivory;
 }
 
+/* .info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  border: 1px solid lightskyblue;
+  border-radius: 100%;
+  padding: 30px;
+} */
+
 .instructions {
-  color: white;
+  color: #323435;
   position: relative;
   font-size: 0.88em;
   align-items: flex-end;
   justify-content: flex-end;
   flex-direction: column;
   margin-top: -75px; 
+  transition-delay: 250ms;
+  transition-property: color;
+  transition-duration: 1s;
+}
+
+.instructions:hover {
+  color: ivory; 
 }
 
 .add-event {
@@ -114,7 +128,6 @@ ul {
   width: 30px;
   border-radius: 100%;
   border: transparent;
-  margin-left:-10px;
   margin-top: -30px;
   transition: background-color .7s;
   outline: none !important;
@@ -159,6 +172,16 @@ ul {
   border-bottom: 1px solid ivory;
 }
 
+.event-list {
+  display: block;
+  margin-left: 400px;
+  width: 600px;
+  height: 450px;
+  margin-top:25px;
+  position: relative;
+  border-radius: 100%;
+}
+
 .event-container {
   display: flex;
   width: 100px;
@@ -170,16 +193,6 @@ ul {
   transition-property: top left;
   font-size: 0.8em;
   cursor: pointer;
-}
-
-.event-list {
-  display: block;
-  margin-left: 400px;
-  width: 600px;
-  height: 450px;
-  margin-top:25px;
-  position: relative;
-  border-radius: 100%;
 }
 
 .event-unarmed {
@@ -212,8 +225,14 @@ ul {
 
 /* media queries */
 
-@media screen and (max-width: 1000px) {
-  body {
-    flex-direction: column;
+@media (max-width: 1200px) {
+  .event-list {
+    margin-left: 200px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .event-list {
+    margin-left: 120px;
   }
 }

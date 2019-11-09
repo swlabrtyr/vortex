@@ -7,13 +7,14 @@ import "../styles.css";
 
 const App = () => {
   return (
-  <div>
     <div className="vortex-app">
+      <h4 style={{marginRight:10 + 'px'}}>
+        <strong>Vortex</strong>
+      </h4>
       <div className="controls">
+ {/* <span className="info">i</span>      */}
         <div className="instructions">
-          <h4>
-            <strong>Vortex</strong>
-          </h4>
+          <h4></h4>
           <p>
             <br /> Type a note + octave & press enter
             <br />
@@ -26,12 +27,12 @@ const App = () => {
         <Remove />
       </div>
       <div>
-        <div >
+        <div>
           <List />
         </div>
       </div>
     </div>
-  </div>
-)};
+  );
+};
 
 export default App;
