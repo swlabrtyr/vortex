@@ -2,6 +2,7 @@ import React from "react";
 import validateInput from "../utils/validateInput";
 import { connect } from "react-redux";
 import { editEvent } from "../redux/actions";
+import "../styles/note-input.scss";
 
 let Input = ({ id, dispatch }) => {
   let input;

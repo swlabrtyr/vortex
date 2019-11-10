@@ -5,6 +5,7 @@ import Pop from "./Pop";
 import Envelope from "./Envelope";
 import Input from "./Input";
 import rotateComponent from "../utils/rotateComponent";
+import "../styles/event.scss";
 
 let EventList = ({
   events,

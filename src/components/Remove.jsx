@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { removeEvent } from "../redux/actions";
+import "../styles/remove.scss";
 
 let Remove = ({ dispatch }) => {
   return (

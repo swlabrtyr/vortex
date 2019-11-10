@@ -7,14 +7,15 @@
   "homepage": "https://swlabrtyr.github.io/vortex",
   "dependencies": {
     "classnames": "2.2.6",
-    "eslint": "^5.16.0",
     "gh-pages": "^2.1.1",
+    "node-sass": "^4.13.0",
     "react": "next",
     "react-dom": "next",
     "react-redux": "5.0.7",
-    "react-scripts": "1.1.4",
+    "react-scripts": "^2.0.0",
     "redux": "4.0.0",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
     "prettier": "1.18.2"
@@ -26,5 +27,11 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

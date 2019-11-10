@@ -4,13 +4,11 @@ import { addEvent } from "../redux/actions";
 import validateInput from "../utils/validateInput";
 import { MAX_EVENTS } from "../constants";
 import store from "../index";
+import "../styles/add.scss";
 
-let Add = ({ dispatch, onClick }) => {
+let Add = ({ dispatch }) => {
   let input;
-  const onBtnClick = () => {
-    this.className = "add-btn-click"
-    this.className = "add-btn"
-  }
+
   return (
     <div>
       <form
