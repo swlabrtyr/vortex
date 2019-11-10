@@ -21,29 +21,6 @@
   background-color: palevioletred;
 }
 
-.pop-event {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background:transparent;
-  font-size: 15px;
-  color: #323435;
-  height: 30px;
-  width: 30px;
-  border-radius: 100%;
-  border: transparent;
-  margin-top: -30px;
-  transition: background-color .7s;
-  outline: none !important;
-}
-
-.pop-event:hover {
-  outline: none !important;
-  color: ivory;
-  border: 1px solid ivory;
-  background-color: palevioletred;
-}
-
 .event-inner-content {
   position: relative;
   justify-content: center;
