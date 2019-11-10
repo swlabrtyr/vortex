@@ -1,6 +1,13 @@
 {
-  "main.css": "static/css/main.2a38a242.css",
-  "main.css.map": "static/css/main.2a38a242.css.map",
-  "main.js": "static/js/main.f3cf63ca.js",
-  "main.js.map": "static/js/main.f3cf63ca.js.map"
+  "main.css": "/vortex/static/css/main.eea14ab4.chunk.css",
+  "main.js": "/vortex/static/js/main.33563a47.chunk.js",
+  "main.js.map": "/vortex/static/js/main.33563a47.chunk.js.map",
+  "runtime~main.js": "/vortex/static/js/runtime~main.9adc791d.js",
+  "runtime~main.js.map": "/vortex/static/js/runtime~main.9adc791d.js.map",
+  "static/js/2.4257d28d.chunk.js": "/vortex/static/js/2.4257d28d.chunk.js",
+  "static/js/2.4257d28d.chunk.js.map": "/vortex/static/js/2.4257d28d.chunk.js.map",
+  "index.html": "/vortex/index.html",
+  "precache-manifest.4ae376c11dea36fc134e71cf03992534.js": "/vortex/precache-manifest.4ae376c11dea36fc134e71cf03992534.js",
+  "service-worker.js": "/vortex/service-worker.js",
+  "static/css/main.eea14ab4.chunk.css.map": "/vortex/static/css/main.eea14ab4.chunk.css.map"
 }
