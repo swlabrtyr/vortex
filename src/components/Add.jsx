@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { addEvent } from "../redux/actions";
 import validateInput from "../utils/validateInput";
 import { MAX_EVENTS } from "../constants";
-import "../styles.css";
 import store from "../index";
 
 let Add = ({ dispatch, onClick }) => {
@@ -25,7 +24,7 @@ let Add = ({ dispatch, onClick }) => {
           input.focus();
         }}
       >
-        <input autoFocus={true} className="add-event" ref={node => (input = node)} />
+        <input autoFocus={true} className="note-input" ref={node => (input = node)} />
         <button type="submit" className="add-btn"> add </button>
       </form>
     </div>

@@ -3,7 +3,7 @@ import Add from "./Add";
 import Remove from "./Remove";
 import List from "../containers/List";
 import ToggleContainer from "../containers/ToggleContainer";
-import "../styles.css";
+import "../styles.scss";
 
 const App = () => {
   return (
@@ -12,7 +12,6 @@ const App = () => {
         <strong>Vortex</strong>
       </h4>
       <div className="controls">
- {/* <span className="info">i</span>      */}
         <div className="instructions">
           <h4></h4>
           <p>

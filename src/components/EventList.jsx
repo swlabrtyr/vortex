@@ -4,8 +4,6 @@ import Note from "./Note";
 import Pop from "./Pop";
 import Envelope from "./Envelope";
 import Input from "./Input";
-import "../styles.css";
-import uuid from "uuid";
 import rotateComponent from "../utils/rotateComponent";
 
 let EventList = ({

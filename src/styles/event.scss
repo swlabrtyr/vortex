@@ -1,0 +1,122 @@
+.pop-event {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:transparent;
+  font-size: 15px;
+  color: #323435;
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  border: transparent;
+  margin-top: -30px;
+  transition: background-color .7s;
+  outline: none !important;
+}
+
+.pop-event:hover {
+  outline: none !important;
+  color: ivory;
+  border: 1px solid ivory;
+  background-color: palevioletred;
+}
+
+.pop-event {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:transparent;
+  font-size: 15px;
+  color: #323435;
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  border: transparent;
+  margin-top: -30px;
+  transition: background-color .7s;
+  outline: none !important;
+}
+
+.pop-event:hover {
+  outline: none !important;
+  color: ivory;
+  border: 1px solid ivory;
+  background-color: palevioletred;
+}
+
+.event-inner-content {
+  position: relative;
+  justify-content: center;
+}
+
+.edit-event-input {
+  position: absolute;
+  outline: none;
+  background: transparent;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  border-bottom: transparent;
+  color: ivory;
+  font-weight: 15;
+  margin-top: 60px;
+  margin-left: -50px;
+  width: 2.2em;
+  height: 20px;
+  box-shadow: none;
+  border-radius: 5%;
+  transition-property: background-color border-bottom;
+  transition-duration: 1s;
+  transition-delay: .1s;
+}
+
+.edit-event-input:hover {
+  border-radius: 10%;
+  background-color: palevioletred;
+  border-bottom: 1px solid ivory;
+}
+
+.event-list {
+  display: block;
+  margin-left: 400px;
+  width: 600px;
+  height: 450px;
+  margin-top:25px;
+  position: relative;
+  border-radius: 100%;
+}
+
+.event-container {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  transition-duration: 0.25s;
+  transition-delay: 0.01s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition-property: top left;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.event-unarmed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:ivory;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  border: 0.12em solid lightskyblue;
+}
+
+.event-armed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:lightskyblue;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  border: 0.12em solid lightskyblue;
+}

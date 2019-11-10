@@ -1,0 +1,16 @@
+.instructions {
+  color: #323435;
+  position: relative;
+  font-size: 0.88em;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: column;
+  margin-top: -75px; 
+  transition-delay: 250ms;
+  transition-property: color;
+  transition-duration: 1s;
+}
+
+.instructions:hover {
+  color: ivory; 
+}

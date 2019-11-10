@@ -21,10 +21,12 @@ const initState = {
     { id: 6, content: "C5", isArmed: false },
     { id: 7, content: "F3", isArmed: true }
   ],
-  adsr 
+  adsr
 };
 
-console.log(initState);
+/* 
+increment() ensures that event.id is always equal to the events array index, 
+helping keep scheduling and event handling correct during sequencing */
 
 const increment = () => {
   n += 1;
@@ -40,7 +42,7 @@ const events = (events = initState.events, action) => {
         ...events,
         {
           id: action.id,
-          content: action.content, 
+          content: action.content,
           isArmed: action.isArmed
         }
       ];
@@ -49,7 +51,7 @@ const events = (events = initState.events, action) => {
       return [...events.slice(0, -1).concat()];
 
     case POP_EVENT:
-      n = -1;
+      n = -1; // re-initialize n to -1 to always start from 0 index
       return events
         .filter(event => {
           return event.id !== action.id;
@@ -59,10 +61,6 @@ const events = (events = initState.events, action) => {
             ...event,
             id: increment()
           };
-          /* 
-          Increment ensures that event.id is always equal to the events array index, 
-           helping keep scheduling and event handling correct during sequencing
-        */
         });
 
     case TOGGLE_EVENT:
